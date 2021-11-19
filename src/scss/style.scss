@@ -160,8 +160,8 @@ body {
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      @media(max-width: 375px) {
-          font-size: 3em;
+      @media (max-width: 375px) {
+        font-size: 3em;
       }
     }
   }
@@ -178,17 +178,48 @@ body {
 
 /// PROMOTION RULES START
 .promotion-rules {
-    text-align: center;
-    margin-top: 3.3em;
-    &__content {
-        width: 43%;
-        margin: 0 auto;
-        @media(max-width: 375px) {
-            width: 100%;
-        }
-        p {
-            font-size: 2em;
-            font-weight: 700;
-        }
+  text-align: center;
+  margin-top: 3.3em;
+  &__content {
+    width: 43%;
+    margin: 0 auto;
+    @media (max-width: 1024px) {
+      width: 70%;
     }
+    @media (max-width: 375px) {
+      width: 100%;
+    }
+    p {
+      font-size: 2em;
+      font-weight: 700;
+    }
+  }
+  &__partners {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 3.3em;
+  }
+  &__card {
+      .card__img {
+          height: 7em;
+          padding: 2px;
+          img {
+             width: 100%; 
+          }
+          #mastercard-logo {
+              max-width: 127px;
+              max-height: 108px;
+          }
+      }
+      p {
+          font-size: 1.4em;
+          font-weight: 700;
+      }
+  }
+
+  &__list {
+      display: flex;
+      justify-content: space-between;
+      padding: 3.3em 8em;
+  }
 }

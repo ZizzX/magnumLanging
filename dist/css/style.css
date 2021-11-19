@@ -191,8 +191,50 @@ body {
   font-weight: 700;
 }
 
+.promotion-rules__partners {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 3.3em;
+}
+
+.promotion-rules__card .card__img {
+  height: 7em;
+  padding: 2px;
+}
+
+.promotion-rules__card .card__img img {
+  width: 100%;
+}
+
+.promotion-rules__card .card__img #mastercard-logo {
+  max-width: 127px;
+  max-height: 108px;
+}
+
+.promotion-rules__card p {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.promotion-rules__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 3.3em 8em;
+}
+
 @media (max-width: 1024px) {
   .promotion__text {
+    width: 70%;
+  }
+
+  .promotion-rules__content {
     width: 70%;
   }
 }
