@@ -1,0 +1,60 @@
+.header {
+  width: 100%;
+  position: relative;
+  padding: 7.5em 0 7.5em 0;
+  min-height: 715px;
+  height: 100vw;
+  max-height: 965px;
+  color: #fff;
+  background: url("../img/header-bg.jpg")center/cover no-repeat;
+
+  &__branch {
+    position: absolute;
+    width: 100%;
+  }
+
+  &__branch--top {
+    top: -30%;
+  }
+
+  &__branch--bottom {
+    bottom: -18%;
+  }
+
+  &__magnum-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    position: relative;
+    z-index: 5;
+  }
+
+  &__title {
+    font-size: $large-font-size;
+    text-align: center;
+    font-weight: 900;
+    margin-top: 1em;
+  }
+
+  &__row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    max-width: 676px;
+    font-weight: 500;
+    font-size: $big-font-size;
+  }
+
+  &__text-span {
+    font-weight: 700;
+  }
+
+  &__champagne {
+    width: 100%;
+    height: 100%;
+    max-width: 325px;
+    max-height: 325px;
+  }
+}

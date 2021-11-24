@@ -15,7 +15,7 @@ let path = {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
     css: source_folder + "/scss/style.scss",
     js: source_folder + "/js/script.js",
-    img: source_folder + "/img/*.{png, jpg, svg, gif, ico, webp, mp4}",
+    img: source_folder + "/img/**/*.{png, jpg, svg, gif, ico, webp, mp4}",
     fonts: source_folder + "/fonts/*.ttf",
   },
   watch: {
@@ -109,9 +109,9 @@ function fonts() {
 function cb() {}
 
 function fontsStyle(params) {
-  let file_content = fs.readFileSync(source_folder + "/scss/fonts.scss");
+  let file_content = fs.readFileSync(source_folder + "/scss/_fonts.scss");
   if (file_content == "") {
-    fs.writeFile(source_folder + "/scss/fonts.scss", "", cb);
+    fs.writeFile(source_folder + "/scss/_fonts.scss", "", cb);
     return fs.readdir(path.build.fonts, function (err, items) {
       if (items) {
         let c_fontname;
@@ -120,7 +120,7 @@ function fontsStyle(params) {
           fontname = fontname[0];
           if (c_fontname != fontname) {
             fs.appendFile(
-              source_folder + "/scss/fonts.scss",
+              source_folder + "/scss/_fonts.scss",
               '@include font("' +
                 fontname +
                 '", "' +
