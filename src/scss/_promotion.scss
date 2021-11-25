@@ -1,0 +1,79 @@
+.promotion {
+  color: #ffffff;
+  padding: 5em 2em 9.5em;
+  background: url("../img/promotion-bg.jpg") center center/100% 100% no-repeat;
+
+  &__title {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    font-size: $big-font-size;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    text-align: center;
+    margin-top: 3em;
+    display: block;
+    font-size: $medium-font-size;
+    font-weight: 700;
+  }
+
+  &__row {
+    align-items: center;
+    justify-content: center;
+    margin-top: 44px;
+    gap: 35px;
+  }
+
+  &__column {
+    position: relative;
+    width: clamp(52px, 5vw, 105px);
+    height: clamp(52px, 5vw, 105px);
+    background: #ffffff;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      &::after {
+        position: absolute;
+        content: ':';
+        top: clamp(12px, 1vw, 15px);
+        right: -22px;
+        font-weight: 700;
+        font-size: calc(21px + 21 * ((100vw - 375px) / (1920 - 375)));
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 25px;
+      height: 106px;
+      bottom: 89%;
+    }
+
+    &:nth-of-type(1),
+    &:nth-of-type(4) {
+      &::before {
+        background: url("../img/ball1.png");
+      }
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      &::before {
+        height: 50px;
+        background: url("../img/ball2.png")center center/contain no-repeat;
+      }
+    }
+  }
+
+  &__time {
+    color: #7D0D13;
+    font-weight: 700;
+    font-size: calc(21px + 21 * ((100vw - 375px) / (1920 - 375)));
+  }
+}

@@ -1,9 +1,9 @@
 .header {
   width: 100%;
   position: relative;
-  padding: 7.5em 40px 7.5em;
+  padding: 7.5em 2em 7.5em;
   color: #fff;
-  background: url("../img/header-bg.jpg") center/100% 100% no-repeat;
+  background: url("../img/header-bg.jpg") center/cover no-repeat;
 
   &::after,
   &::before {
@@ -15,38 +15,46 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: block;
+
+    @media (max-width: 992px) {
+      height: 320px;
+    }
+    @media (max-width: 790px) {
+      height: 290px;
+    }
+    @media (max-width: 662px) {
+      height: 250px;
+    }
   }
 
   &::before {
     background: url("../img/branch-top.png") 0 0/100% 100% no-repeat;
     top: -20%;
+    @media (max-width: 992px) {
+      background: url("../img/branch-top.png") 0 0/cover no-repeat;
+    }
   }
 
   &::after {
     bottom: -30%;
+    z-index: 0;
     background: url("../img/branch-bottom.png") 0 0/100% 100% no-repeat;
-  }
 
-  /*&__branch {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 385px;
-    height: clamp(170px, 40vw, 385px);
+    @media (max-width: 992px) {
+      bottom: -25%;
+      background: url("../img/branch-bottom.png") 0 0/cover no-repeat;
+    }
+    @media (max-width: 790px) {
+      bottom: -20%;
+    }
   }
-
-  &__branch--top {
-    top: -5vw;
-  }
-
-  &__branch--bottom {
-    bottom: -18%;
-  }*/
 
   &__magnum-logo {
     display: block;
     margin: 0 auto;
     max-width: 300px;
+    width: 100%;
+    min-width: 200px;
     position: relative;
     z-index: 5;
   }
@@ -63,12 +71,20 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    @media (max-width: 992px) {
+      margin-top: 30px;
+    }
   }
 
   &__text {
     max-width: 676px;
     font-weight: 500;
     font-size: $big-font-size;
+
+    @media (max-width: 992px) {
+      text-align: center;
+    }
   }
 
   &__text-span {
@@ -77,6 +93,11 @@
 
   &__champagne {
     width: clamp(220px, 2vw, 325px);
+
+    @media (max-width: 992px) {
+      margin-top: 2em;
+      transform: rotate(6.9deg);
+    }
 
     & img {
       width: 100%;
