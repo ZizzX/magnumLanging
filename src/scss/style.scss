@@ -17,6 +17,24 @@ body {
 
 .row {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: $title-font-size;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 700;
+}
+
+.star {
+  position: absolute;
+  width: clamp(37px, 5vw, 95px);
+  height: clamp(31px, 4.5vw, 79px);
+
+  img {
+    width: 100%;
+  }
 }
 
 /// HEADER START
@@ -28,5 +46,6 @@ body {
 /// PROMOTION END
 
 /// PROMOTION RULES START
+@import "promotionRules";
 /// PROMOTION RULES END
 

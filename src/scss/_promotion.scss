@@ -31,24 +31,19 @@
     height: 385px;
     display: block;
 
-    @media (max-width: 992px) {
-      height: 320px;
-    }
-    @media (max-width: 790px) {
+    @media (max-width: 1220px) {
       height: 290px;
-    }
-    @media (max-width: 662px) {
-      height: 250px;
-    }
-
-    @media (max-width: 1024px) {
       background: url("../img/branch-bottom.png") 0 0/cover no-repeat;
     }
     @media (max-width: 992px) {
       top: -20%;
+      height: 280px;
     }
     @media (max-width: 790px) {
       top: -18%;
+    }
+    @media (max-width: 662px) {
+      height: 250px;
     }
   }
 
@@ -167,12 +162,3 @@
   }
 }
 
-.star {
-  position: absolute;
-  width: clamp(37px, 5vw, 95px);
-  height: clamp(31px, 4.5vw, 79px);
-
-  img {
-    width: 100%;
-  }
-}
