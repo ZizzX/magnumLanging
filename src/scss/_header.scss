@@ -6,7 +6,6 @@
   color: #fff;
   background: url("../img/header-bg.jpg") center/cover no-repeat;
 
-  &::after,
   &::before {
     content: '';
     position: absolute;

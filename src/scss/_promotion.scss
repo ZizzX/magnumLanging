@@ -165,17 +165,14 @@
     bottom: 12vw;
     left: 10%;
   }
-
-  .star {
-    width: clamp(37px, 5vw, 95px);
-    height: clamp(31px, 4.5vw, 79px);
-
-    img {
-      width: 100%;
-    }
-  }
 }
 
 .star {
   position: absolute;
+  width: clamp(37px, 5vw, 95px);
+  height: clamp(31px, 4.5vw, 79px);
+
+  img {
+    width: 100%;
+  }
 }
