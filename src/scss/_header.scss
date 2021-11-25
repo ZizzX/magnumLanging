@@ -18,13 +18,13 @@
   }
 
   &::before {
-    background: url("../img/branch-top.png") 0 0/100% 100% no-repeat;;
+    background: url("../img/branch-top.png") 0 0/100% 100% no-repeat;
     top: -20%;
   }
 
   &::after {
     bottom: -30%;
-    background: url("../img/branch-bottom.png") 0 0/100% 100% no-repeat;;
+    background: url("../img/branch-bottom.png") 0 0/100% 100% no-repeat;
   }
 
   /*&__branch {
