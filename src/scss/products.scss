@@ -3,4 +3,8 @@
     margin: 0 auto;
     margin-top: clamp(47px, 5vw, 59px);
   }
+
+  &__title {
+    margin-top: clamp(50px, 7vw, 75px);
+  }
 }
