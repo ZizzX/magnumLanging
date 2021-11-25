@@ -1,6 +1,6 @@
 .promotion-rules {
   padding: 4em 3em 1.8em;
-  background: url("../img/bg-with-snow.png") center center/cover no-repeat;
+  //background: url("../img/bg-with-snow.png") center center/cover no-repeat;
   background-attachment: scroll;
 
   &__title {
@@ -69,5 +69,10 @@
     font-weight: 500;
     font-size: $main-font-size;
     margin-top: 15px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    margin-top: clamp(41px, 5vw, 64px);
   }
 }

@@ -1,0 +1,6 @@
+.products {
+  &__btn {
+    margin: 0 auto;
+    margin-top: clamp(47px, 5vw, 59px);
+  }
+}
