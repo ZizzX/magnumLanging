@@ -1,4 +1,5 @@
 .header {
+  z-index: -1;
   width: 100%;
   position: relative;
   padding: 7.5em 2em 7.5em;
@@ -30,22 +31,12 @@
   &::before {
     background: url("../img/branch-top.png") 0 0/100% 100% no-repeat;
     top: -20%;
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
+      top: -30%;
       background: url("../img/branch-top.png") 0 0/cover no-repeat;
     }
-  }
-
-  &::after {
-    bottom: -30%;
-    z-index: 0;
-    background: url("../img/branch-bottom.png") 0 0/100% 100% no-repeat;
-
     @media (max-width: 992px) {
-      bottom: -25%;
-      background: url("../img/branch-bottom.png") 0 0/cover no-repeat;
-    }
-    @media (max-width: 790px) {
-      bottom: -20%;
+      top: -13%;
     }
   }
 
