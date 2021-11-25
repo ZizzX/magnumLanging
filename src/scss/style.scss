@@ -15,7 +15,6 @@ body {
 .container {
   margin: 0 auto;
   max-width: 1180px;
-  padding: 0 16px;
 }
 
 .row {
@@ -91,4 +90,8 @@ body {
 /// WINNERS START
 @import "winners";
 /// WINNERS END
+
+/// GENERAL-PARTNERS START
+@import "generalPartners";
+/// GENERAL-PARTNERS END
 

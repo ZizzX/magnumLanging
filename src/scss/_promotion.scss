@@ -90,7 +90,7 @@
       &::after {
         position: absolute;
         content: ':';
-        top: clamp(12px, 1vw, 15px);
+        top: clamp(12px, 1vw, 20px);
         right: -22px;
         font-weight: 700;
         font-size: calc(21px + 21 * ((100vw - 375px) / (1920 - 375)));
