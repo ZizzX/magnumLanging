@@ -54,10 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setClock('.timer', deadline);
 
-  //PROMOTION RULES START
-
-  //PROMOTION RULES END
-
   //SLIDER
   let productsSlider = new Glide('.glide', {
     type: 'carousel',
