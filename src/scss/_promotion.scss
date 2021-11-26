@@ -10,14 +10,14 @@
 
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     left: 0;
     right: 0;
-    bottom: -1px;
+    bottom: -3vw;
     width: 100%;
     display: inline-block;
-    height: clamp(44px, 12vw, 315px);
-    background: url("../img/winter-tree.svg") center center/100% 100% no-repeat;
+    height: clamp(44px,13vw,315px);
+    background: url(../img/winter-tree.svg) center center/100% 100vw no-repeat;
   }
 
   &::before {

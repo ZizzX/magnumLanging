@@ -4,7 +4,35 @@
     margin-top: clamp(47px, 5vw, 59px);
   }
 
+  &__slider {
+    padding: 0 15px;
+    //max-width: 1200px;
+  }
+
+  .glide__slide {
+    background: #FFFFFF;
+    box-shadow: 0 8px 11px 4px rgba(187, 187, 187, 0.25), 0 0 11px 4px rgba(187, 187, 187, 0.25);;
+    border-radius: 10px;
+    padding: 16px 10px 23px;
+    width: clamp(125px, 8vw, 216px) !important;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .glide__arrow {
+      display: none;
+    }
+  }
+
   &__title {
     margin-top: clamp(50px, 7vw, 75px);
   }
+}
+
+.slider-text {
+  font-size: clamp(10px, 2vw, 16px);
+  text-align: center;
 }

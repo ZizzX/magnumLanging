@@ -1,6 +1,9 @@
 @import "reset";
 @import "fonts";
 @import "variables";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+
 
 body {
   font-family: 'GTWalsheimPro';
@@ -11,6 +14,12 @@ body {
   overflow-x: hidden;
 
   background: url("../img/bg-with-snow.png");
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .container {
@@ -87,6 +96,40 @@ body {
 
 .title--mt {
   margin-top: clamp(20px, 4vw, 48px);
+}
+
+.glide__arrows .glide__arrow {
+  color: #1c1c1c;
+}
+
+.slider {
+  .glide__arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .glide__slides {
+    padding: 20px 0;
+  }
+
+  .glide__arrow--right {
+    right: 0;
+  }
+
+  .glide__arrow--left {
+    left: 0;
+  }
+
+  .glide__track {
+    padding: 0 20px;
+  }
 }
 
 /// HEADER START
