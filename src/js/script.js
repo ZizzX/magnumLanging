@@ -54,8 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setClock('.timer', deadline);
 
+  //PROMOTION RULES START
+
+  //PROMOTION RULES END
+
   //SLIDER
-  new Glide('.glide', {
+  let productsSlider = new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
     perView: 6,
@@ -92,25 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
         peek: {before: 50, after: 200},
       },
     },
-  }).mount();
+  });
 
-  new Glide('.winners__slider', {
+  productsSlider.mount();
+
+  const winnersSlider = new Glide('.winners__slider', {
     type: 'carousel',
     startAt: 0,
     perView: 3,
     gap: 20,
-    peek: {before: 0, after: 0},
     breakpoints: {
       1280: {
-        perView: 3,
         gap: 20,
       },
       1100: {
-        perView: 3,
         gap: 15,
       },
       996: {
-        perView: 3,
         gap: 10,
       },
       800: {
@@ -120,5 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         perView: 1,
       },
     },
-  }).mount();
+  });
+  winnersSlider.mount();
 });
