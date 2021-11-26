@@ -3,11 +3,12 @@
 @import "variables";
 
 body {
-  font-family: GTWalsheimPro;
+  font-family: 'GTWalsheimPro';
   font-size: $main-font-size;
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 
   background: url("../img/bg-with-snow.png");
 }
