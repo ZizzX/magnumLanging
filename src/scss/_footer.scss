@@ -24,7 +24,8 @@
   .answer {
     font-weight: 500;
     margin-bottom: 13px;
-    max-width: 200px;
+    min-width: 200px;
+    max-width: 230px;
     line-height: 1;
   }
 
@@ -36,12 +37,56 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 270px 380px 220px;
+    //grid-template-columns: 270px 380px 220px;
+    grid-template-columns: minmax(230px, 270px) minmax(365px, 380px) minmax(220px, 230px);
     place-content: space-between;
+    gap: 0.5em;
+
+    @media (max-width: 1024px) {
+      text-align: center;
+      grid-template-columns: minmax(230px, 380px);
+      grid-auto-rows: min-content;
+      place-content: center;
+      grid-template-areas:
+      'app'
+      'help-desk'
+      'copyright';
+
+      .answer {
+        margin: 0 auto 20px;
+        font-weight: 550;
+      }
+
+      .qr {
+        display: none;
+      }
+
+      .download-text {
+        max-width: 235px;
+        min-width: 220px;
+        margin: auto;
+      }
+
+      .help-desk {
+        margin-top: 15px;
+      }
+
+      .copyright {
+        margin-top: 20px;
+        grid-area: copyright;
+      }
+      .app {
+        grid-area: app;
+      }
+      .help-desk {
+        grid-area: help-desk;
+      }
+    }
 
     .row {
       margin-top: 15px;
       gap: 12px;
+      justify-content: center;
     }
   }
 }
