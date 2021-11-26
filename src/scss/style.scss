@@ -71,6 +71,23 @@ body {
   }
 }
 
+.mt-100 {
+  margin-top: clamp(75px, 7vw, 100px);
+}
+
+.row-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.row--mt {
+  margin-top: clamp(32px, 5vw, 45px);
+}
+
+.title--mt {
+  margin-top: clamp(20px, 4vw, 48px);
+}
+
 /// HEADER START
 @import "header";
 /// HEADER END
@@ -94,4 +111,12 @@ body {
 /// GENERAL-PARTNERS START
 @import "generalPartners";
 /// GENERAL-PARTNERS END
+
+/// PARTNERS START
+@import "partners";
+/// PARTNERS END
+
+/// FOOTER START
+@import "footer";
+/// FOOTER END
 

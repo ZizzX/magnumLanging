@@ -1,0 +1,47 @@
+.footer {
+  margin-top: clamp(30px, 5vw, 103px);
+  background: url("../img/footer-bg.jpg") center/cover no-repeat;
+  padding: clamp(25px, 4vw, 38px) clamp(30px, 12vw, 160px) clamp(54px, 5vw, 65px);
+  position: relative;
+
+  font-size: clamp(14px, 2vw, 18px);
+  color: #FFFFFF;
+  line-height: 1.3;
+  font-weight: 400;
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    display: inline-block;
+    height: clamp(35px, 8vw, 152px);
+    background: url("../img/footer-winter-tree.png") center center/100% 105% no-repeat;
+  }
+
+  .answer {
+    font-weight: 500;
+    margin-bottom: 13px;
+    max-width: 200px;
+    line-height: 1;
+  }
+
+  .tel {
+    font-weight: 500;
+    color: #FFFFFF;
+    font-size: clamp(16px, 2vw, 24px);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 270px 380px 220px;
+    place-content: space-between;
+
+    .row {
+      margin-top: 15px;
+      gap: 12px;
+    }
+  }
+}
