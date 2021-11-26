@@ -101,4 +101,12 @@
     text-align: right;
     vertical-align: bottom;
   }
+
+  .winners__slider {
+    position: relative;
+  }
+
+  .glide__slide {
+    width: clamp(105px, 18vw, 250px) !important;
+  }
 }

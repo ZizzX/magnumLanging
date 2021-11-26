@@ -1,15 +1,16 @@
 .partners {
   overflow: hidden;
+  margin-top: clamp(35px, 7vw, 100px);
 
   &__row {
     //justify-content: space-around;
-    //gap: 1.5em;
+    gap: 1.5em;
     //padding: 0 15px;
     //flex-wrap: wrap;
-    gap: 0.5em;
+    //gap: 0.5em;
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 17%));
+    grid-template-columns: repeat(auto-fit, minmax(15%, 17%));
   }
 
   .col {

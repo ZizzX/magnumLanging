@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  import Glide, {Images} from '@glidejs/glide/dist/glide.modular.esm';
 
   const deadline = '2021-12-30';
 
@@ -93,5 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         peek: {before: 50, after: 200},
       },
     },
-  }).mount({Images});
+  }).mount();
+
+  new Glide('.winners__slider', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 3,
+    gap: 20,
+    peek: {before: 0, after: 0},
+    breakpoints: {
+      1280: {
+        perView: 3,
+        gap: 20,
+      },
+      1100: {
+        perView: 3,
+        gap: 15,
+      },
+      996: {
+        perView: 3,
+        gap: 10,
+      },
+      800: {
+        perView: 2,
+      },
+      590: {
+        perView: 1,
+      },
+    },
+  }).mount();
 });
