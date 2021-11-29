@@ -61,35 +61,32 @@ document.addEventListener('DOMContentLoaded', () => {
     perView: 6,
     gap: 25,
     length: 5,
-    peek: {before: 0, after: 0},
     breakpoints: {
       1280: {
-        perView: 4,
+        perView: 6,
         gap: 20,
       },
       1100: {
-        perView: 4,
+        perView: 6,
         gap: 15,
       },
       996: {
-        perView: 3,
+        perView: 4,
         gap: 10,
       },
       800: {
-        perView: 2,
-        peek: {before: 50, after: 200},
-      },
-      590: {
-        perView: 1,
-        peek: {before: 50, after: 400},
+        perView: 4,
       },
       589: {
-        perView: 1,
-        peek: {before: 50, after: 200},
+        perView:3,
+      },
+      550: {
+        perView: 3,
+        gap: 5,
       },
       480: {
-        perView: 1,
-        peek: {before: 50, after: 200},
+        perView: 3,
+        gap: 8,
       },
     },
   });
@@ -104,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     breakpoints: {
       1280: {
         gap: 20,
+        perView: 3,
       },
       1100: {
         gap: 15,
@@ -112,12 +110,55 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 10,
       },
       800: {
-        perView: 2,
+        perView: 3,
       },
       590: {
-        perView: 1,
+        perView: 2,
       },
     },
   });
+
+  winnersSlider.on('mount.after', () => {
+    let winnersSlider = document.querySelector('.winners__slider'),
+        slider = winnersSlider.querySelectorAll('.glide__slide img'),
+        winnersModal = document.querySelector('.winners-modal'),
+        modalImg = winnersModal.querySelector('.modal-img'),
+        overlay = winnersModal.querySelector('.overlay'),
+        close = winnersModal.querySelector('.close'),
+        img = winnersModal.querySelector('.modal-img img'),
+        currentImg = null;
+
+    slider.forEach((slider, index) => {
+      slider.addEventListener('click', (e) => {
+        const target = e.target;
+        let attr = target.attributes[0].value;
+        currentImg = attr;
+        showModal();
+      });
+    });
+
+    function showModal() {
+      winnersModal.classList.add('active');
+      img.setAttribute('src', currentImg);
+    }
+
+    winnersModal.addEventListener('click', (e) => {
+      let target = e.target;
+      if (target.classList.contains('overlay') ||
+          target.classList.contains('close')) {
+        return closeModal();
+      }
+    });
+
+    function closeModal() {
+      currentImg = null;
+      img.removeAttribute('src');
+      winnersModal.classList.remove('active');
+    }
+
+  });
+
+  console.log(winnersSlider.index);
+
   winnersSlider.mount();
 });
