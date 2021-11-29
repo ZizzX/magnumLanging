@@ -1,0 +1,27 @@
+.partners {
+  overflow: hidden;
+  margin-top: clamp(35px, 7vw, 100px);
+
+  &__row {
+    //justify-content: space-around;
+    gap: 1.5em;
+    //padding: 0 15px;
+    //flex-wrap: wrap;
+    //gap: 0.5em;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(15%, 17%));
+  }
+
+  .col {
+    //flex: 0 0 15%;
+    //height: clamp(41px, 2vw, 81px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

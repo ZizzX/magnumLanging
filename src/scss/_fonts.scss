@@ -1,0 +1,6 @@
+@import 'mixins';
+
+@include font("GTWalsheimPro", "GTWalsheimPro-Regular", "400", "normal");
+@include font("GTWalsheimPro", "GTWalsheimPro-UltraBold", "900", "normal");
+@include font("GTWalsheimPro", "GTWalsheimPro-Medium", "500", "normal");
+@include font("GTWalsheimPro", "GTWalsheimPro-Bold", "700", "normal");

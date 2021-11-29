@@ -1,0 +1,26 @@
+.products {
+
+  &--padding-x {
+    padding: 0 30px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    margin-top: clamp(47px, 5vw, 59px);
+  }
+
+  &__title {
+    margin-top: clamp(50px, 7vw, 75px);
+  }
+
+  .glide__slide {
+    //width: clamp(125px, 8vw, 216px) !important;
+    padding: 16px 10px 23px;
+  }
+
+}
+
+.slider-text {
+  font-size: clamp(10px, 2vw, 16px);
+  text-align: center;
+}

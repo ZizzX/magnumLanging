@@ -1,0 +1,137 @@
+.header {
+  z-index: 0;
+  width: 100%;
+  position: relative;
+  padding: 8em 1em 15em;
+  color: #fff;
+  background: url("../img/header-bg.jpg") center/cover no-repeat;
+  @media (max-width: 870px) {
+    padding-bottom: 11em;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 385px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+    @media (max-width: 992px) {
+      height: 320px;
+    }
+    @media (max-width: 790px) {
+      height: 290px;
+    }
+    @media (max-width: 662px) {
+      height: 250px;
+    }
+  }
+
+  &::before {
+    background: url("../img/branch-top.png") 0 0/100% 100% no-repeat;
+    top: -20%;
+    @media (max-width: 1220px) {
+      background: url("../img/branch-top.png") 0 0/cover no-repeat;
+    }
+    @media (max-width: 1024px) {
+      top: -30%;
+    }
+    @media (max-width: 992px) {
+      top: -13%;
+    }
+  }
+
+  .lang-row {
+    gap: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 12vw;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    top: 10rem;
+
+    .lang.hide {
+      display: none;
+    }
+
+    .lang {
+      display: inline-block;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 790px) {
+      top: 9.8rem;
+    }
+
+    @media (max-width: 700px) {
+      top: 9.1rem;
+    }
+
+    @media (max-width: 600px) {
+      top: 8.5rem;
+    }
+
+    @media (max-width: 515px) {
+      top: 8.2rem;
+      right: 6vw;
+    }
+  }
+
+  &__magnum-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    width: clamp(165px, 36vw, 300px);
+    min-width: 165px;
+    position: relative;
+    z-index: 5;
+  }
+
+  &__title {
+    font-size: $large-font-size;
+    text-align: center;
+    font-weight: 900;
+    margin-top: 1em;
+  }
+
+  &__row {
+    margin-top: 1vw;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 992px) {
+      margin-top: 30px;
+    }
+  }
+
+  &__text {
+    max-width: 676px;
+    font-weight: 500;
+    font-size: $big-font-size;
+
+    @media (max-width: 992px) {
+      text-align: center;
+    }
+  }
+
+  &__text-span {
+    font-weight: 700;
+  }
+
+  &__champagne {
+    width: clamp(220px, 2vw, 325px);
+
+    @media (max-width: 992px) {
+      margin-top: 2em;
+      transform: rotate(6.9deg);
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+}

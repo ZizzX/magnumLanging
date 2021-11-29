@@ -1,0 +1,5 @@
+$main-font-size: calc(14px + 2 * ((100vw - 375px) / (1920 - 375))); //16
+$medium-font-size: calc(16px + 8 * ((100vw - 375px) / (1920 - 375))); //24
+$title-font-size: calc(18px + 18 * ((100vw - 375px) / (1920 - 375))); //36
+$big-font-size: calc(25px + 23 * ((100vw - 375px) / (1920 - 375))); //48
+$large-font-size: calc(29px + 37 * ((100vw - 375px) / (1920 - 375))); //72

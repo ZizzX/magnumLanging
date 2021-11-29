@@ -1,0 +1,78 @@
+.promotion-rules {
+  padding: 4em 3em 1.8em;
+  //background: url("../img/bg-with-snow.png") center center/cover no-repeat;
+  background-attachment: scroll;
+
+  &__title {
+    max-width: 899px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__brands {
+    justify-content: space-between;
+    max-width: 725px;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: clamp(27px, 3vw, 42px);
+  }
+
+  &__magnum {
+    max-width: 246px;
+    width: clamp(108px, 38vw, 246px);
+    min-width: 108px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__mastercard {
+    max-width: 127px;
+    width: clamp(55px, 18vw, 127px);
+    min-width: 55px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__row {
+    margin-top: clamp(30px, 5vw, 65px);
+    gap: 6em;
+
+    & > * {
+      width: 100%;
+      flex: 1 1 27%;
+
+      @media (max-width: 992px) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+
+  &__num {
+    color: #7D0D13;
+    font-size: clamp(36px, 4vw, 47px);
+    font-weight: 700;
+  }
+
+  &__text {
+    font-weight: 500;
+    margin-top: 14px;
+    line-height: 1.2;
+    font-size: $medium-font-size;
+  }
+
+  &__descr {
+    color: #B88386;
+    font-weight: 500;
+    font-size: $main-font-size;
+    margin-top: 15px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    margin-top: clamp(41px, 5vw, 64px);
+  }
+}

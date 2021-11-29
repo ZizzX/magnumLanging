@@ -1,0 +1,164 @@
+.winners {
+  padding: 0 16px;
+
+  &__card {
+    max-width: 980px;
+    width: 100%;
+
+    margin: clamp(50px, 7vw, 75px) auto clamp(20px, 7vw, 45px);
+
+    background: #FFF8F8 url("../img/winners-bg.png") 0 0/cover;
+    box-shadow: 0px 0px 7px rgba(108, 108, 108, 0.25);
+
+    padding: clamp(8px, 2vw, 18px);
+
+    position: relative;
+  }
+
+  .bant {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: clamp(105px, 14vw, 290px);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__card-inner {
+    border: 1px solid #E9B95E;
+    border-radius: 1px;
+    width: 100%;
+    height: 100%;
+
+    padding: clamp(35px, 3vw, 54px) clamp(15px, 8vw, 100px);
+  }
+
+  &__title {
+    color: #1C1C1C;
+    text-align: center;
+    line-height: 1.2;
+    font-size: clamp(16px, 3vw, 30px);
+    font-weight: 700;
+    max-width: 44rem;
+  }
+
+  &__descr {
+    text-align: center;
+    font-size: clamp(14px, 2vw, 24px);
+
+    margin-top: clamp(20px, 3vw, 40px);
+  }
+
+  &__list {
+    display: block;
+    margin-top: clamp(20px, 5vw, 40px);
+    padding: 0;
+
+    font-size: clamp(14px, 2vw, 24px);
+  }
+
+  &__list-item {
+    display: block;
+    letter-spacing: -1ex;
+    margin: 5px 0 25px;
+  }
+
+  &-name {
+    margin-right: -10%;
+    width: 75%;
+    vertical-align: top;
+    overflow: hidden;
+    display: inline-block;
+    letter-spacing: normal;
+
+    @media (min-width: 1280px) {
+      width: 70%;
+    }
+    @media (max-width: 600px) {
+      width: 67%;
+    }
+    @media (max-width: 505px) {
+      width: 54%;
+    }
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 99%;
+      margin: 0 -99% 0 3px;
+      vertical-align: baseline;
+      border-bottom: 1px dotted #000;
+    }
+  }
+
+  &-city {
+    display: inline-block;
+    letter-spacing: normal;
+    padding-left: 3px;
+    margin-left: 10%;
+    width: max-content;
+    text-align: right;
+    vertical-align: bottom;
+  }
+
+  .winners__slider {
+    position: relative;
+  }
+
+  .glide__slide {
+    //width: clamp(105px, 18vw, 250px) !important;
+  }
+
+  &-modal.active {
+    display: flex;
+  }
+
+  &-modal {
+    position: fixed;
+    z-index: 15;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    .close {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #FFFFFF;
+      right: 20px;
+      top: 5px;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.7;
+    }
+
+    .modal-img {
+      padding: 0 15px;
+      position: absolute;
+      width: 100%;
+      max-width: 550px;
+      display: block;
+
+      img {
+        border-radius: 10px;
+        width: 100%;
+      }
+    }
+  }
+}

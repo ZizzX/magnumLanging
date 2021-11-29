@@ -1,0 +1,111 @@
+.footer {
+  margin-top: clamp(30px, 5vw, 103px);
+  background: url("../img/footer-bg.jpg") center/cover no-repeat;
+  padding: clamp(25px, 4vw, 38px) clamp(30px, 12vw, 160px) clamp(54px, 5vw, 65px);
+  position: relative;
+
+  font-size: clamp(14px, 2vw, 18px);
+  color: #FFFFFF;
+  line-height: 1.3;
+  font-weight: 400;
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    display: inline-block;
+    height: clamp(35px, 14vw, 152px);
+    background: url("../img/footer-winter-tree.png") center center/100% 100% no-repeat;
+  }
+
+  .answer {
+    font-weight: 500;
+    margin-bottom: 13px;
+    min-width: 200px;
+    max-width: 260px;
+    line-height: 1;
+  }
+
+  .tel {
+    font-weight: 500;
+    color: #FFFFFF;
+    font-size: clamp(16px, 2vw, 24px);
+  }
+
+  .appStore,
+  .playMarket {
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .grid {
+    display: grid;
+    //grid-template-columns: 270px 380px 220px;
+    grid-template-columns: minmax(230px, 270px) minmax(365px, 380px) minmax(220px, 230px);
+    place-content: space-between;
+    gap: 0.5em;
+
+    @media (max-width: 1024px) {
+      text-align: center;
+      grid-template-columns: minmax(230px, 380px);
+      grid-auto-rows: min-content;
+      place-content: center;
+      grid-template-areas:
+      'app'
+      'help-desk'
+      'copyright';
+
+      .row {
+        justify-content: center;
+      }
+
+      .row > * {
+        margin: 0 5px;
+      }
+
+      .answer {
+        margin: 0 auto 20px;
+        font-weight: 550;
+      }
+
+      .qr {
+        display: none;
+      }
+
+      .appStore,
+      .playMarket {
+        display: block;
+      }
+
+      .download-text {
+        max-width: 235px;
+        min-width: 220px;
+        margin: auto;
+      }
+
+      .help-desk {
+        margin-top: 15px;
+      }
+
+      .copyright {
+        margin-top: 20px;
+        grid-area: copyright;
+      }
+      .app {
+        grid-area: app;
+      }
+      .help-desk {
+        grid-area: help-desk;
+      }
+    }
+
+    .row {
+      margin-top: 15px;
+      gap: 12px;
+    }
+  }
+}
