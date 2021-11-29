@@ -1,5 +1,5 @@
 .header {
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   position: relative;
   padding: 8em 2em 15em;
@@ -44,12 +44,44 @@
     }
   }
 
+  .lang-row {
+    gap: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 12vw;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    top: 10rem;
+
+    a {
+      display: inline-block;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 790px) {
+      top: 9.8rem;
+    }
+
+    @media (max-width: 700px) {
+      top: 9.1rem;
+    }
+
+    @media (max-width: 600px) {
+      top: 8.5rem;
+    }
+
+    @media (max-width: 515px) {
+      top: 8.2rem;
+      right: 6vw;
+    }
+  }
+
   &__magnum-logo {
     display: block;
     margin: 0 auto;
     max-width: 300px;
-    width: 100%;
-    min-width: 200px;
+    width: clamp(165px, 36vw, 300px);
+    min-width: 165px;
     position: relative;
     z-index: 5;
   }

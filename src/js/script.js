@@ -1,4 +1,5 @@
 'use strict';
+import * as lang from '../js/locale.json';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         perView: 4,
       },
       589: {
-        perView:3,
+        perView: 3,
       },
       550: {
         perView: 3,
@@ -157,8 +158,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   });
-
-  console.log(winnersSlider.index);
-
   winnersSlider.mount();
+
+  // LANG START
+  const lang = document.querySelectorAll('.lang');
+  let curLang = 'ru';
+
+  lang.forEach(langLink => {
+    langLink.addEventListener('click', (e) => {
+      const target = e.target;
+      curLang = target.getAttribute('data-lang');
+      localStorage.setItem('lang', curLang);
+    });
+  });
+
+  function setPageLanguage() {
+
+  }
+
+  // LANG END
+
 });
