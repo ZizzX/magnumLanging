@@ -36,13 +36,15 @@ let {src, dest} = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     clean_css = require('gulp-clean-css'),
     rename = require('gulp-rename'),
-    group_media = require('gulp-group-css-media-queries'),
     ttf2woff = require('gulp-ttf2woff'),
     ttf2woff2 = require('gulp-ttf2woff2'),
     uglify = require('gulp-uglify-es').default,
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    webpack = require('webpack'),
+    webpackStream = require('webpack-stream'),
+    webpackConfig = require('./webpack.config.js');
 
 function browserSync(params) {
   browsersync.init({
@@ -68,20 +70,10 @@ function image() {
 }
 
 function js() {
-  return src(path.src.js).
-      pipe(fileinclude())
-      .pipe(sourcemaps.init())
-      .pipe(babel())
-      .pipe(concat(path.src.js))
-      .pipe(sourcemaps.write("."))
+  return src(path.src.js)
+      .pipe(fileinclude())
+      .pipe(webpackStream(webpackConfig), webpack)
       .pipe(dest(path.build.js)).
-      pipe(uglify()).
-      pipe(
-          rename({
-            extname: '.min.js',
-          }),
-      ).
-      pipe(dest(path.build.js)).
       pipe(browsersync.stream());
 }
 

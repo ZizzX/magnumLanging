@@ -1,5 +1,6 @@
 'use strict';
 import * as lang from '../js/locale.json';
+import Glide     from '@glidejs/glide';
 
 document.addEventListener('DOMContentLoaded', () => {
 
