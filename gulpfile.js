@@ -40,7 +40,9 @@ let {src, dest} = require('gulp'),
     ttf2woff = require('gulp-ttf2woff'),
     ttf2woff2 = require('gulp-ttf2woff2'),
     uglify = require('gulp-uglify-es').default,
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    babel = require('gulp-babel'),
+    concat = require('gulp-concat');
 
 function browserSync(params) {
   browsersync.init({
@@ -67,8 +69,12 @@ function image() {
 
 function js() {
   return src(path.src.js).
-      pipe(fileinclude()).
-      pipe(dest(path.build.js)).
+      pipe(fileinclude())
+      .pipe(sourcemaps.init())
+      .pipe(babel())
+      .pipe(concat(path.src.js))
+      .pipe(sourcemaps.write("."))
+      .pipe(dest(path.build.js)).
       pipe(uglify()).
       pipe(
           rename({
@@ -80,29 +86,29 @@ function js() {
 }
 
 function css() {
-  return src(path.src.css)
-  .pipe(sourcemaps.init())
-  .pipe(
-      sass({
-        outputStyle: 'compressed',
-      }).on('error', sass.logError),
-  )
-  .pipe(
-      autoprefixer({
-        overrideBrowserslist: ['last 5 versions'],
-        cascade: true,
-      }),
-  )
-  .pipe(dest(path.build.css))
-  .pipe(clean_css())
-  .pipe(
-      rename({
-        extname: '.min.css',
-      }),
-  )
-  .pipe(sourcemaps.write('.'))
-  .pipe(dest(path.build.css))
-  .pipe(browsersync.stream());
+  return src(path.src.css).
+      pipe(sourcemaps.init()).
+      pipe(
+          sass({
+            outputStyle: 'compressed',
+          }).on('error', sass.logError),
+      ).
+      pipe(
+          autoprefixer({
+            overrideBrowserslist: ['last 5 versions'],
+            cascade: true,
+          }),
+      ).
+      pipe(dest(path.build.css)).
+      pipe(clean_css()).
+      pipe(
+          rename({
+            extname: '.min.css',
+          }),
+      ).
+      pipe(sourcemaps.write('.')).
+      pipe(dest(path.build.css)).
+      pipe(browsersync.stream());
 }
 
 function fonts() {
