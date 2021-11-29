@@ -2,7 +2,7 @@
   z-index: 0;
   width: 100%;
   position: relative;
-  padding: 8em 2em 15em;
+  padding: 8em 1em 15em;
   color: #fff;
   background: url("../img/header-bg.jpg") center/cover no-repeat;
   @media (max-width: 870px) {
@@ -53,7 +53,11 @@
     font-weight: 700;
     top: 10rem;
 
-    a {
+    .lang.hide {
+      display: none;
+    }
+
+    .lang {
       display: inline-block;
       text-decoration: underline;
     }
