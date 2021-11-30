@@ -17,6 +17,10 @@
     padding: 16px 10px 23px;
   }
 
+  .glide__slide.hide {
+    display: none;
+  }
+
   .product-grid {
     display: grid;
     grid-template-columns: 1fr;

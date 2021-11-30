@@ -195,12 +195,51 @@ document.addEventListener('DOMContentLoaded', () => {
       curLang = target.getAttribute('data-lang');
       localStorage.setItem('lang', curLang);
       setPageLanguage();
+
     });
   });
 
   function setPageLanguage(blockName) {
     const local = locale()[curLang];
+    productsSlider.destroy();
+
+    productsSlider = new Glide('.products__slider', {
+      type: 'carousel',
+      startAt: 0,
+      perView: 6,
+      gap: 25,
+      height: 235,
+      breakpoints: {
+        1280: {
+          perView: 6,
+          gap: 20,
+        },
+        1100: {
+          perView: 6,
+          gap: 15,
+        },
+        996: {
+          perView: 4,
+          gap: 10,
+        },
+        800: {
+          perView: 4,
+        },
+        589: {
+          perView: 3,
+        },
+        550: {
+          perView: 3,
+          gap: 5,
+        },
+        480: {
+          perView: 3,
+          gap: 8,
+        },
+      },
+    });
     createProductsSlider();
+    productsSlider.mount();
 
     headerTitle.textContent = local.header.title;
     headerText.innerHTML = local.header.subtitle;
@@ -242,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // LANG END
   //PRODUCTS START
-
   const productsArr = [
     {
       img: './img/products/1.jpg',
@@ -309,23 +347,14 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
-  const parent = document.querySelector('.products .products__slider');
-  const glideTrack = document.createElement('div');
-  createNodeElement({
-    parent,
-    node: glideTrack,
-    attr: 'data-glide-el',
-    attributeValue: 'track',
-    tag: 'div',
-    className: 'glide__track',
-  });
+  let productsList = document.querySelector('#products-list');
 
+  function putSlidersIntoWrapper(productsList, arr) {
+    productsList.innerHTML = '';
 
-  function putSlidersIntoWrapper(ul, arr) {
     arr.forEach(productObj => {
       let descr = curLang === 'ru' ? productObj.descrRU : productObj.descrKZ;
-
-      ul.innerHTML += `
+      productsList.innerHTML += `
                            <li style="display: flex; flex-direction: column;" class="glide__slide product-item">
                               <div class="product-grid" style="background: url(${productObj.img})50% 50%/contain no-repeat"></div>
                               <p style="max-height: 4.8rem; height: 100%; text-align: center; margin: 0.5rem 0 0;" class="slider-text product-text">${descr}</p>
@@ -334,23 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function createElement(ul) {
-    putSlidersIntoWrapper(ul, productsArr);
-  }
-
   function createProductsSlider() {
-    let ul = document.querySelector('#products-list');
-
- /*   createNodeElement({
-      parent: glideTrack,
-      node: ul,
-      attr: 'id',
-      attributeValue: 'products-list',
-      tag: 'ul',
-      className: 'glide__slides',
-    });*/
-
-    createElement(ul);
+    putSlidersIntoWrapper(productsList, productsArr);
   }
 
   function createNodeElement({
@@ -366,8 +380,9 @@ document.addEventListener('DOMContentLoaded', () => {
     parent.append(node);
   }
 
-  createProductsSlider();
-  //PRODUCTS END
+  productsSlider.on('mount.before', () => createProductsSlider());
+
   productsSlider.mount();
+  //PRODUCTS END
 
 });
