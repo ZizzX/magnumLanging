@@ -45,7 +45,6 @@ let {src, dest} = require('gulp'),
     webpack = require('webpack'),
     webpackStream = require('webpack-stream'),
     webpackConfig = require('./webpack.config.js');
-import imagemin from 'gulp-imagemin';
 
 function browserSync(params) {
   browsersync.init({
@@ -65,8 +64,7 @@ function html() {
 }
 
 function image() {
-  return src(path.src.img)
-      .pipe(imagemin()).
+  return src(path.src.img).
       pipe(dest(path.build.img)).
       pipe(browsersync.stream());
 }
