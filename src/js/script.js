@@ -61,16 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let productsSlider = new Glide('.products__slider', {
     type: 'carousel',
     startAt: 0,
-    perView: 6,
+    perView: 5,
     gap: 25,
     height: 235,
     breakpoints: {
       1280: {
-        perView: 6,
+        perView: 5,
         gap: 20,
       },
       1100: {
-        perView: 6,
+        perView: 5,
         gap: 15,
       },
       996: {
@@ -78,18 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 10,
       },
       800: {
-        perView: 4,
-      },
-      589: {
         perView: 3,
       },
       550: {
         perView: 3,
-        gap: 5,
+        gap: 10,
       },
       480: {
-        perView: 3,
-        gap: 8,
+        perView: 2,
+        gap: 10,
       },
     },
   });
@@ -233,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
           gap: 5,
         },
         480: {
-          perView: 3,
+          perView: 2,
           gap: 8,
         },
       },
@@ -300,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       img: './img/products/4.jpg',
-      descrRU: 'Универсальное Чистящее СРЕДСТВО «DOMESTOS» \n' +
+      descrRU: 'Универсальное Чистящее средство «DOMESTOS» \n' +
           'в ассортименте 1 Л',
       descrKZ: '«DOMESTOS» әмбебап Тазартқыш ҚҰРАЛЫ \n' +
           'ТҮР-ТҮРІМЕН 1 Л',
@@ -355,10 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
     arr.forEach(productObj => {
       let descr = curLang === 'ru' ? productObj.descrRU : productObj.descrKZ;
       productsList.innerHTML += `
-                           <li style="display: flex; flex-direction: column;" class="glide__slide product-item">
+                           <li class="glide__slide product-item">
                               <div class="product-grid" style="background: url(${productObj.img})50% 50%/contain no-repeat"></div>
-                              <div style="height: 2rem; display: flex; flex-direction: column; justify-content: end">
-                                 <p style="text-align: center; margin: 0.5rem 0 0;" class="slider-text product-text">${descr}</p>
+                              <div class="product-text">
+                                 <p class="slider-text">${descr}</p>
                               </div>
                             </li>
                             `;

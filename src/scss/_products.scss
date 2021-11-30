@@ -1,6 +1,9 @@
 .products {
   &--padding-x {
-    padding: 0 30px;
+    padding: 0 2em;
+    @media (max-width: 799px) {
+      padding: 0 1em;
+    }
   }
 
   &__btn {
@@ -14,18 +17,34 @@
 
   .glide__slide {
     //width: clamp(125px, 8vw, 216px) !important;
-    padding: 16px 10px 23px;
+    //padding: 16px 10px 23px;
+    padding: 1em 0.5em 1.1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .glide__slides {
+    align-items: stretch;
   }
 
   .glide__slide.hide {
     display: none;
   }
 
+  .product-text {
+    text-align: center;
+    margin: .5rem 0 0;
+    height: clamp(30px, 7vw, 70px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    justify-content: center;
+  }
+
   .product-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 250px;
-    place-items: center;
+    height: clamp(140px, 30vw, 250px);
 
     img {
       width: 100%;
