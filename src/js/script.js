@@ -357,7 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
       productsList.innerHTML += `
                            <li style="display: flex; flex-direction: column;" class="glide__slide product-item">
                               <div class="product-grid" style="background: url(${productObj.img})50% 50%/contain no-repeat"></div>
-                              <p style="max-height: 4.8rem; height: 100%; text-align: center; margin: 0.5rem 0 0;" class="slider-text product-text">${descr}</p>
+                              <div style="height: 2rem; display: flex; flex-direction: column; justify-content: end">
+                                 <p style="text-align: center; margin: 0.5rem 0 0;" class="slider-text product-text">${descr}</p>
+                              </div>
                             </li>
                             `;
     });
@@ -367,21 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
     putSlidersIntoWrapper(productsList, productsArr);
   }
 
-  function createNodeElement({
-    parent,
-    node,
-    className,
-    attributeValue,
-    attr,
-    tag,
-  }) {
-    node.classList.add(className);
-    node.setAttribute(attr, attributeValue);
-    parent.append(node);
-  }
-
   productsSlider.on('mount.before', () => createProductsSlider());
-
   productsSlider.mount();
   //PRODUCTS END
 
