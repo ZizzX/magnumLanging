@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setClock('.timer', deadline);
 
   //SLIDER
-
-  let productsSlider = new Glide('.products__slider', {
+  const productSettings = {
     type: 'carousel',
     startAt: 0,
     perView: 5,
@@ -89,7 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 10,
       },
     },
-  });
+  };
+
+  let productsSlider = new Glide('.products__slider', productSettings);
 
   const winnersSlider = new Glide('.winners__slider', {
     type: 'carousel',
@@ -200,41 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const local = locale()[curLang];
     productsSlider.destroy();
 
-    productsSlider = new Glide('.products__slider', {
-      type: 'carousel',
-      startAt: 0,
-      perView: 6,
-      gap: 25,
-      height: 235,
-      breakpoints: {
-        1280: {
-          perView: 6,
-          gap: 20,
-        },
-        1100: {
-          perView: 6,
-          gap: 15,
-        },
-        996: {
-          perView: 4,
-          gap: 10,
-        },
-        800: {
-          perView: 4,
-        },
-        589: {
-          perView: 3,
-        },
-        550: {
-          perView: 3,
-          gap: 5,
-        },
-        480: {
-          perView: 2,
-          gap: 8,
-        },
-      },
-    });
+    productsSlider = new Glide('.products__slider', productSettings);
     createProductsSlider();
     productsSlider.mount();
 
