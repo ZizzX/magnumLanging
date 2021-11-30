@@ -200,10 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setPageLanguage(blockName) {
     const local = locale()[curLang];
-    document.getElementById('products-list').remove();
-
     createProductsSlider();
-    productsSlider.update();
 
     headerTitle.textContent = local.header.title;
     headerText.innerHTML = local.header.subtitle;
@@ -329,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let descr = curLang === 'ru' ? productObj.descrRU : productObj.descrKZ;
 
       ul.innerHTML += `
-                            <li style="display: flex; flex-direction: column;" class="glide__slide product-item">
+                           <li style="display: flex; flex-direction: column;" class="glide__slide product-item">
                               <div class="product-grid" style="background: url(${productObj.img})50% 50%/contain no-repeat"></div>
                               <p style="max-height: 4.8rem; height: 100%; text-align: center; margin: 0.5rem 0 0;" class="slider-text product-text">${descr}</p>
                             </li>
