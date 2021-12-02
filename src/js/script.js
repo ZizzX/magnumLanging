@@ -236,9 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     helpDesk.textContent = local.footer.helpDesk;
   }
 
-  productsBtn.setAttribute('href',
-      './doc/products.pdf');
-
   // LANG END
   //PRODUCTS START
   const productsArr = [
