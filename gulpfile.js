@@ -10,6 +10,7 @@ let path = {
     js: project_folder + '/js',
     img: project_folder + '/img',
     fonts: project_folder + '/fonts',
+    doc: project_folder + '/doc',
   },
   src: {
     html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
@@ -17,12 +18,14 @@ let path = {
     js: source_folder + '/js/script.js',
     img: source_folder + '/img/**/*',
     fonts: source_folder + '/fonts/*.ttf',
+    doc: source_folder + '/doc/**/*',
   },
   watch: {
     html: source_folder + '/**/*.html',
     css: source_folder + '/scss/**/*.scss',
     js: source_folder + '/js/**/*.js',
     img: source_folder + '/img/**/*',
+    doc: source_folder + '/doc/**/*',
   },
   clean: './' + project_folder + '/',
 };
@@ -77,6 +80,10 @@ function js() {
       pipe(browsersync.stream());
 }
 
+function doc() {
+  return src(path.src.doc).pipe(dest(path.build.doc)).pipe(browsersync.stream());
+}
+
 function css() {
   return src(path.src.css).
       pipe(sourcemaps.init()).
@@ -107,8 +114,6 @@ function fonts() {
   src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
   return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
 }
-
-function cb() {}
 
 async function fontsStyle(params) {
   let file_content = await fs.readFileSync(source_folder + '/scss/_fonts.scss');
@@ -143,13 +148,14 @@ function watchFiles(params) {
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.img], image);
+  gulp.watch([path.watch.doc], doc);
 }
 
 function clean(params) {
   return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(css, html, js, image, fonts),
+let build = gulp.series(clean, gulp.parallel(css, html, js, image, fonts, doc),
     fontsStyle);
 let watch = gulp.parallel(browserSync, build, watchFiles);
 
@@ -159,6 +165,7 @@ exports.fonts = fonts;
 exports.js = js;
 exports.css = css;
 exports.html = html;
+exports.doc = doc;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;

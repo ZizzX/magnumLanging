@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   productsBtn.setAttribute('href',
-      './doc/products.xlsx');
+      './doc/products.pdf');
 
   // LANG END
   //PRODUCTS START
