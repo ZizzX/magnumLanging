@@ -1,5 +1,8 @@
 'use strict';
 
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const {extendDefaultPlugins} = require('svgo');
+
 let path = require('path');
 
 module.exports = {
@@ -24,6 +27,7 @@ module.exports = {
             presets: ['@babel/preset-env'],
           },
         },
-      }],
+      },
+    ],
   },
 };

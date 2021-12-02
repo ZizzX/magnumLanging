@@ -43,11 +43,11 @@ let {src, dest} = require('gulp'),
     ttf2woff2 = require('gulp-ttf2woff2'),
     uglify = require('gulp-uglify-es').default,
     sourcemaps = require('gulp-sourcemaps'),
-    babel = require('gulp-babel'),
     concat = require('gulp-concat'),
     webpack = require('webpack'),
     webpackStream = require('webpack-stream'),
-    webpackConfig = require('./webpack.config.js');
+    webpackConfig = require('./webpack.config.js'),
+    imagemin = require('gulp-imagemin');
 
 function browserSync(params) {
   browsersync.init({
@@ -67,7 +67,16 @@ function html() {
 }
 
 function image() {
-  return src(path.src.img).
+  return src(path.src.img).pipe(imagemin({
+    interlaced: true,
+    progressive: true,
+    optimizationLevel: 5,
+    svgoPlugins: [
+      {
+        removeViewBox: true,
+      },
+    ],
+  })).
       pipe(dest(path.build.img)).
       pipe(browsersync.stream());
 }
@@ -81,7 +90,9 @@ function js() {
 }
 
 function doc() {
-  return src(path.src.doc).pipe(dest(path.build.doc)).pipe(browsersync.stream());
+  return src(path.src.doc).
+      pipe(dest(path.build.doc)).
+      pipe(browsersync.stream());
 }
 
 function css() {
