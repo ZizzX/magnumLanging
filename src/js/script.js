@@ -57,19 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setClock('.timer', deadline);
 
   //SLIDER
-  let productsSlider = new Glide('.glide', {
+  const productSettings = {
     type: 'carousel',
     startAt: 0,
-    perView: 6,
+    perView: 5,
     gap: 25,
-    length: 5,
+    height: 235,
     breakpoints: {
       1280: {
-        perView: 6,
+        perView: 5,
         gap: 20,
       },
       1100: {
-        perView: 6,
+        perView: 5,
         gap: 15,
       },
       996: {
@@ -77,23 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 10,
       },
       800: {
-        perView: 4,
-      },
-      589: {
         perView: 3,
       },
       550: {
         perView: 3,
-        gap: 5,
+        gap: 10,
       },
       480: {
-        perView: 3,
-        gap: 8,
+        perView: 2,
+        gap: 10,
       },
     },
-  });
+  };
 
-  productsSlider.mount();
+  let productsSlider = new Glide('.products__slider', productSettings);
 
   const winnersSlider = new Glide('.winners__slider', {
     type: 'carousel',
@@ -159,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   });
-  winnersSlider.mount();
+  // winnersSlider.mount();
 
   // LANG START
   const lang = document.querySelectorAll('.lang');
@@ -196,11 +193,17 @@ document.addEventListener('DOMContentLoaded', () => {
       curLang = target.getAttribute('data-lang');
       localStorage.setItem('lang', curLang);
       setPageLanguage();
+
     });
   });
 
   function setPageLanguage(blockName) {
     const local = locale()[curLang];
+    productsSlider.destroy();
+
+    productsSlider = new Glide('.products__slider', productSettings);
+    createProductsSlider();
+    productsSlider.mount();
 
     headerTitle.textContent = local.header.title;
     headerText.innerHTML = local.header.subtitle;
@@ -237,6 +240,101 @@ document.addEventListener('DOMContentLoaded', () => {
     helpDesk.textContent = local.footer.helpDesk;
   }
 
+  productsBtn.setAttribute('href',
+      './doc/products.pdf');
+
   // LANG END
+  //PRODUCTS START
+  const productsArr = [
+    {
+      img: './img/products/1.jpg',
+      descrRU: 'ВОДА «ASU»ГАЗ.,БЕЗ ГАЗА в ассортименте 1 Л',
+      descrKZ: '«ASU» ГАЗДАЛМАҒАН, ГАЗДАЛҒАН СУЫ ТҮР-ТҮРІМЕН 1 Л',
+    },
+    {
+      img: './img/products/2.jpg',
+      descrRU: 'ШОКОЛАД «ALPEN GOLD» в ассортименте 80 Г',
+      descrKZ: '«ALPEN GOLD» ШОКОЛАДЫ ТҮР-ТҮРІМЕН 80 Г',
+    },
+    {
+      img: './img/products/3.png',
+      descrRU: 'Средство для мытья посуды «FAIRY» \n' +
+          '900 мл в ассортименте',
+      descrKZ: '«FAIRY» ЫДЫС ЖУҒЫШ ҚҰРАЛЫ 900 мл түр-түрімен',
+    },
+    {
+      img: './img/products/4.jpg',
+      descrRU: 'Универсальное Чистящее средство «DOMESTOS» \n' +
+          'в ассортименте 1 Л',
+      descrKZ: '«DOMESTOS» әмбебап Тазартқыш ҚҰРАЛЫ \n' +
+          'ТҮР-ТҮРІМЕН 1 Л',
+    },
+    {
+      img: './img/products/5.jpg',
+      descrRU: 'СОК «DADA» в ассортименте 1,9 Л',
+      descrKZ: '«DADA» ШЫРЫНЫ ТҮР-ТҮРІМЕН 1,9 Л',
+    },
+    {
+      img: './img/products/6.jpg',
+      descrRU: 'БАЛЬЗАМ «GLISS KUR” в ассортименте 400 - 360 МЛ',
+      descrKZ: '«GLISS KUR»  БАЛЬЗАМЫ ТҮР-ТҮРІМЕН 400-360 МЛ',
+    },
+    {
+      img: './img/products/7.jpg',
+      descrRU: 'ЭКСПРЕСС-КОНДИЦИОНЕР «GLISS KUR” в ассортименте 400 - 360 МЛ',
+      descrKZ: '«GLISS KUR»  ЭКСПРЕСС-КОНДИЦИОНЕРІ ТҮР-ТҮРІМЕН 400-360 МЛ',
+    },
+    {
+      img: './img/products/8.jpg',
+      descrRU: 'ШАМПУНЬ «GLISS KUR” в ассортименте 400 - 360 МЛ',
+      descrKZ: '«GLISS KUR» СУСАБЫНЫ ТҮР-ТҮРІМЕН 400-360 МЛ',
+    },
+    {
+      img: './img/products/9.jpg',
+      descrRU: 'ШОКОЛАД «MILKA» в ассортименте 300 Г',
+      descrKZ: '«MILKA» ШОКОЛАДЫ ТҮР-ТҮРІМЕН 300 Г',
+    },
+    {
+      img: './img/products/10.jpg',
+      descrRU: 'НАПИТОК «PEPSI» 2 Л',
+      descrKZ: '«PEPSI»  СУСЫНЫ  2 Л',
+    },
+    {
+      img: './img/products/11.png',
+      descrRU: 'СРЕДСТВО ДЛЯ СТИРКИ «TIDE» в ассортименте',
+      descrKZ: '«TIDE» КІР ЖУҒЫШ ҚҰРАЛЫ ТҮР-ТҮРІМЕН',
+    },
+    {
+      img: './img/products/12.png',
+      descrRU: 'СУХАРИКИ «ХРУСTEAM MIX» в ассортименте 95 Г',
+      descrKZ: '«ХРУСTEAM MIX» КЕПТІРІЛГЕН НАНЫ ТҮР-ТҮРІМЕН 95 Г',
+    },
+  ];
+
+  let productsList = document.querySelector('#products-list');
+
+  function putSlidersIntoWrapper(productsList, arr) {
+    productsList.innerHTML = '';
+
+    arr.forEach(productObj => {
+      let descr = curLang === 'ru' ? productObj.descrRU : productObj.descrKZ;
+      productsList.innerHTML += `
+                           <li class="glide__slide product-item">
+                              <div class="product-grid" style="background: url(${productObj.img})50% 50%/contain no-repeat"></div>
+                              <div class="product-text">
+                                 <p class="slider-text">${descr}</p>
+                              </div>
+                            </li>
+                            `;
+    });
+  }
+
+  function createProductsSlider() {
+    putSlidersIntoWrapper(productsList, productsArr);
+  }
+
+  productsSlider.on('mount.before', () => createProductsSlider());
+  productsSlider.mount();
+  //PRODUCTS END
 
 });

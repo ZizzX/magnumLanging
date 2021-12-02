@@ -7,6 +7,13 @@
     max-width: 899px;
     display: block;
     margin: 0 auto;
+
+    @media (max-width: 520px) {
+      max-width: 340px;
+    }
+    @media (max-width: 505px) {
+      max-width: 310px;
+    }
   }
 
   &__brands {
