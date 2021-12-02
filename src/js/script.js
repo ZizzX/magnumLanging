@@ -89,10 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     },
   };
-
-  let productsSlider = new Glide('.products__slider', productSettings);
-
-  const winnersSlider = new Glide('.winners__slider', {
+  const winnersSettings = {
     type: 'carousel',
     startAt: 0,
     perView: 3,
@@ -115,15 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
         perView: 2,
       },
     },
-  });
+  };
+
+  let productsSlider = new Glide('.products__slider', productSettings);
+  let winnersSlider = new Glide('.winners__slider', winnersSettings);
 
   winnersSlider.on('mount.after', () => {
     let winnersSlider = document.querySelector('.winners__slider'),
         slider = winnersSlider.querySelectorAll('.glide__slide img'),
         winnersModal = document.querySelector('.winners-modal'),
-        modalImg = winnersModal.querySelector('.modal-img'),
-        overlay = winnersModal.querySelector('.overlay'),
-        close = winnersModal.querySelector('.close'),
         img = winnersModal.querySelector('.modal-img img'),
         currentImg = null;
 
@@ -154,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
       img.removeAttribute('src');
       winnersModal.classList.remove('active');
     }
-
   });
   // winnersSlider.mount();
 
@@ -199,8 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setPageLanguage(blockName) {
     const local = locale()[curLang];
-    productsSlider.destroy();
 
+    productsSlider.destroy();
     productsSlider = new Glide('.products__slider', productSettings);
     createProductsSlider();
     productsSlider.mount();
