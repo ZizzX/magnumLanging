@@ -4,7 +4,7 @@ import Glide    from '@glidejs/glide';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const deadline = '2021-12-30';
+  const deadline = '2021-12-31';
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
