@@ -75,12 +75,12 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 	function setPageLanguage() {
 		const local = locale()[curLang];
 		
-		headerTitle.textContent = local.header.title;
+		headerTitle.innerHTML = local.header.title;
 		headerText.innerHTML = local.header.subtitle;
 		promotionTitle.textContent = local.promotion.title;
 		promotionSubtitle.textContent = local.promotion.subtitle;
-		promotionText.textContent = local.promotion.text;
-		promotionRulesTitle.textContent = local.promotionRules.title;
+		promotionText.innerHTML = local.promotion.text;
+		promotionRulesTitle.innerHTML = local.promotionRules.title;
 		promotionRulesText.forEach((text, i) => {
 			text.textContent = local.promotionRules.text[i];
 		});
