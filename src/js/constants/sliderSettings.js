@@ -3,6 +3,7 @@ export const productSettings = {
 	startAt: 0,
 	perView: 5,
 	gap: 25,
+	autoplay: 4000,
 	height: 235,
 	breakpoints: {
 		1280: {
