@@ -4,7 +4,6 @@ import slider from './slider.js';
 
 function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 	const lang = document.querySelectorAll('.lang');
-	localStorage.setItem('lang', curLang);
 	
 	const headerTitle = document.querySelector('.header__title'),
 			headerText = document.querySelector('.header__text'),
@@ -28,28 +27,53 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 			helpDesk = document.querySelector('.help-desk p'),
 			promotionMillionLogo = document.querySelector('.promotion__million-logo');
 	
-	const {ru, kz} = locale();
+	function removeHideClass(elem) {
+		elem.classList.remove('hide');
+	}
+	
+	function addHideClass(elem) {
+		elem.classList.add('hide');
+	}
+	
+	function getElemAttribute(elem, attr) {
+		return elem.getAttribute(attr);
+	}
+	
+	function setElemAttribute(elem, qualifiedName, value) {
+		elem.setAttribute(qualifiedName, value);
+	}
+	
+	lang.forEach(langItem => {
+		const attr = getElemAttribute(langItem, 'data-lang');
+		if (attr === curLang) {
+			addHideClass(langItem);
+		} else {
+			removeHideClass(langItem);
+		}
+	});
 	
 	lang.forEach(langLink => {
 		langLink.addEventListener('click', (e) => {
-			console.log(curLang, 'curLang');
-			
 			const target = e.target;
-			lang.forEach(langItem => langItem.classList.remove('hide'));
-			target.classList.add('hide');
-			curLang = target.getAttribute('data-lang');
+			
+			lang.forEach(langItem => removeHideClass(langItem));
+			addHideClass(target);
+			
+			curLang = getElemAttribute(target, 'data-lang');
 			localStorage.setItem('lang', curLang);
+			
 			setPageLanguage();
+			
+			sliderName.destroy();
+			sliderName = slider(
+					{wrapper: sliderClassName, settings: productSettings});
+			sliderFn();
+			sliderName.mount();
 		});
 	});
 	
 	function setPageLanguage() {
 		const local = locale()[curLang];
-		
-		sliderName.destroy();
-		sliderName = slider({wrapper: sliderClassName, settings: productSettings});
-		sliderFn();
-		sliderName.mount();
 		
 		headerTitle.textContent = local.header.title;
 		headerText.innerHTML = local.header.subtitle;
@@ -66,13 +90,11 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 		
 		promotionRulesBtn.textContent = local.promotionRules.btn;
 		if (curLang === 'ru') {
-			promotionRulesBtn.setAttribute('href',
-																		 './doc/promotion-rules.pdf');
-			promotionMillionLogo.setAttribute('src', './img/million.png');
+			setElemAttribute(promotionRulesBtn, 'href', './doc/promotion-rules.pdf');
+			setElemAttribute(promotionMillionLogo, 'src', './img/million.png');
 		} else {
-			promotionRulesBtn.setAttribute('href',
-																		 './doc/promotion-rules.pdf');
-			promotionMillionLogo.setAttribute('src', './img/kz_million.png');
+			setElemAttribute(promotionRulesBtn, 'href', './doc/promotion-rules.pdf');
+			setElemAttribute(promotionMillionLogo, 'src', './img/kz_million.png');
 		}
 		productsTitle.textContent = local.products.title;
 		productsBtn.textContent = local.products.btn;
@@ -86,7 +108,7 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 		helpDesk.textContent = local.footer.helpDesk;
 	}
 	
-	return curLang;
+	setPageLanguage();
 }
 
 export default changeLanguage;

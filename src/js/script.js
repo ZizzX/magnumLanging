@@ -7,16 +7,22 @@ import createSliderWithLang from './moduls/createSliderWithLang.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	timer();
-	const createSlider = createSliderWithLang();
-	let productsSlider = slider(
-			{wrapper: '.products__slider', settings: productSettings});
+	const createSlider = createSliderWithLang(),
+			productsSlider = slider({
+																wrapper: '.products__slider',
+																settings: productSettings,
+															});
+	let curLang = localStorage.getItem('lang') || 'ru';
+	localStorage.setItem('lang', curLang);
+	
+	createSlider();
 	changeLanguage({
 									 sliderName: productsSlider,
 									 sliderFn: createSlider,
 									 sliderClassName: '.products__slider',
-									 curLang: 'ru',
+									 curLang,
 								 });
-	createSlider();
+	
 	productsSlider.mount();
 });
 
