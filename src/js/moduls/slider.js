@@ -1,15 +1,28 @@
 import Glide from '@glidejs/glide';
 import Modal from './showImgModal.js';
+import {winnersSettings} from '../constants/sliderSettings.js';
 
-function slider({wrapper, showModal = false, settings, slideImg, modalName, modalImg}) {
-	const slider = new Glide(wrapper, settings);
+function slider({
+									wrapper,
+									showModal = false,
+									settings,
+									slideImg,
+									modalName,
+									modalImg,
+								}) {
+	let arraySlidersName = [],
+			slider;
+	
+	slider = new Glide(wrapper, settings);
 	
 	if (showModal) {
+		if (wrapper.isArray) {
+			console.log('isArray');
+		}
 		slider.on('mount.after', () => {
-			let winnersSlider = document.querySelector(wrapper),
-					sliderImg = winnersSlider.querySelectorAll(slideImg),
-					modalName = document.querySelector(modalName),
-					modalImg = modalName.querySelector(modalImg),
+			let sliderImg = document.querySelectorAll(slideImg),
+					modalName = document.querySelector('.winners-modal'),
+					modalImg = document.querySelector('.modal-img > img'),
 					currentImg = null;
 			
 			const modal = new Modal();

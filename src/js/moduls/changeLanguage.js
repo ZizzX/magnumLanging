@@ -1,8 +1,19 @@
 import {locale} from '../locale.js';
 import {productSettings} from '../constants/sliderSettings.js';
 import slider from './slider.js';
+import Winners from './winners.js';
+import {winnersArray} from '../constants/winners.js';
+import {winnersImagesArray} from '../constants/winners.js';
+import {winnersSettings} from '../constants/sliderSettings.js';
+import Glide from '@glidejs/glide';
 
-function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
+function changeLanguage({
+													sliderName,
+													sliderFn,
+													sliderClassName,
+													curLang,
+													winnersParentElem,
+												}) {
 	const lang = document.querySelectorAll('.lang');
 	
 	const headerTitle = document.querySelector('.header__title'),
@@ -17,8 +28,8 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 			promotionRulesBtn = document.querySelector('.promotion-rules__btn'),
 			productsTitle = document.querySelector('.products__title'),
 			productsBtn = document.querySelector('.products__btn'),
-			winnersTitle = document.querySelector('.winners__title'),
-			winnersDescr = document.querySelector('.winners__descr'),
+			/*		winnersTitle = document.querySelector('.winners__title'),
+			 winnersDescr = document.querySelector('.winners__descr'),*/
 			generalPartnersTitle = document.querySelector('.general-partners__title'),
 			partnersTitle = document.querySelector('.partners__title'),
 			copyright = document.querySelector('.copyright .text'),
@@ -55,6 +66,10 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 	lang.forEach(langLink => {
 		langLink.addEventListener('click', (e) => {
 			const target = e.target;
+			const newContainer = winnersParentElem.querySelector('.winners' +
+																															 ' .container');
+			
+			newContainer.remove();
 			
 			lang.forEach(langItem => removeHideClass(langItem));
 			addHideClass(target);
@@ -74,6 +89,26 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 	
 	function setPageLanguage() {
 		const local = locale()[curLang];
+		
+		const winnerParentElement = document.querySelector('.winners'),
+				container = document.createElement('div');
+		
+		container.classList.add('container');
+		winnerParentElement.append(container);
+		
+		const winnersLangObject = local.winners;
+		
+		winnersLangObject.winnersTitles.forEach((week, index) => {
+			new Winners({
+										parent: container,
+										title: week.title,
+										subtitle: winnersLangObject.congrat,
+										lang: curLang,
+										winnersArray: winnersArray,
+										slider: `slider-${index + 1}`,
+										winnersImages: winnersImagesArray,
+									}).render();
+		});
 		
 		headerTitle.innerHTML = local.header.title;
 		headerText.innerHTML = local.header.subtitle;
@@ -98,8 +133,8 @@ function changeLanguage({sliderName, sliderFn, sliderClassName, curLang}) {
 		}
 		productsTitle.textContent = local.products.title;
 		productsBtn.textContent = local.products.btn;
-		winnersTitle.textContent = local.winners.title;
-		winnersDescr.textContent = local.winners.subtitle;
+		/*	winnersTitle.textContent = local.winners.title;
+		 winnersDescr.textContent = local.winners.subtitle;*/
 		generalPartnersTitle.textContent = local.generalPartners.title;
 		partnersTitle.textContent = local.partners.title;
 		copyright.textContent = local.footer.copyright;

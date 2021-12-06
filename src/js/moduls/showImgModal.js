@@ -4,15 +4,16 @@ class Modal {
 		this.img = img;
 		this.currentImg = currentImg;
 	}
-	showModal() {
-		this.modal.classList.add('active');
-		this.img.setAttribute('src', this.currentImg);
+	
+	showModal({currentImg, modal, modalImg}) {
+		modal.classList.add('active');
+		modalImg.setAttribute('src', currentImg);
 	}
 	
-	closeModal() {
-		this.currentImg = null;
-		this.img.removeAttribute('src');
-		this.modal.classList.remove('active');
+	closeModal({currentImg, modal, modalImg}) {
+		currentImg = null;
+		modalImg.removeAttribute('src');
+		modal.classList.remove('active');
 	}
 }
 
