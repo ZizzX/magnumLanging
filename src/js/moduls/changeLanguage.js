@@ -98,17 +98,24 @@ function changeLanguage({
 		
 		const winnersLangObject = local.winners;
 		
-		winnersLangObject.winnersTitles.forEach((week, index) => {
-			new Winners({
-										parent: container,
-										title: week.title,
-										subtitle: winnersLangObject.congrat,
-										lang: curLang,
-										winnersArray: winnersArray,
-										slider: `slider-${index + 1}`,
-										winnersImages: winnersImagesArray,
-									}).render();
-		});
+		new Winners({
+									title: winnersLangObject.title,
+									subtitle: winnersLangObject.subtitle,
+									parent: container,
+									lang: curLang,
+								}).render();
+		
+		/*winnersLangObject.winnersTitles.forEach((week, index) => {
+		 new Winners({
+		 parent: container,
+		 title: week.title,
+		 subtitle: winnersLangObject.congrat,
+		 lang: curLang,
+		 winnersArray: winnersArray[index],
+		 slider: `slider-${index + 1}`,
+		 winnersImages: winnersImagesArray[index],
+		 }).render();
+		 });*/
 		
 		headerTitle.innerHTML = local.header.title;
 		headerText.innerHTML = local.header.subtitle;

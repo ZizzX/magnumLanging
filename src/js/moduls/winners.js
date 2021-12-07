@@ -76,6 +76,7 @@ class Winners {
 			});
 		} else {
 			winnersList.style = 'display: none';
+			winnersSlider.style = 'display: none';
 		}
 		
 		if (this.winnersImages) {
