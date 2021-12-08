@@ -1,6 +1,5 @@
 import Glide from '@glidejs/glide';
 import Modal from './showImgModal.js';
-import {winnersSettings} from '../constants/sliderSettings.js';
 
 function slider({
 									wrapper,
