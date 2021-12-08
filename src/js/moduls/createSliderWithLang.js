@@ -1,9 +1,15 @@
 import {productsArr} from '../constants/productsArr.js';
+import slider from './slider.js';
+import {productSettings} from '../constants/sliderSettings.js';
 
 function createSliderWithLang() {
 	let productsList = document.querySelector('#products-list');
+	const productsSlider = slider({
+																	wrapper: '.products__slider',
+																	settings: productSettings,
+																});
 	
-	return function createProductsSlider() {
+	function createProductsSlider() {
 		productsList.innerHTML = '';
 		let currLang = localStorage.getItem('lang');
 		
@@ -18,8 +24,11 @@ function createSliderWithLang() {
                             </li>
                             `;
 		});
-		;
-	};
+	}
+	
+	createProductsSlider();
+	
+	return productsSlider;
 }
 
 export default createSliderWithLang;

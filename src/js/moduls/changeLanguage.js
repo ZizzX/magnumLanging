@@ -1,13 +1,10 @@
 import {locale} from '../locale.js';
-import {productSettings} from '../constants/sliderSettings.js';
-import slider from './slider.js';
 import createWinnersSlider from './sliderCreate.js';
 import destroySlider from './removeWinnersSlider.js';
+import createSliderWithLang from './createSliderWithLang.js';
+import createElement from '../helpers/createElement.js';
 
 function changeLanguage({
-													sliderName,
-													sliderFn,
-													sliderClassName,
 													curLang,
 												}) {
 	const lang = document.querySelectorAll('.lang');
@@ -67,15 +64,10 @@ function changeLanguage({
 			curLang = getElemAttribute(target, 'data-lang');
 			localStorage.setItem('lang', curLang);
 			
-			setPageLanguage();
-			
 			destroySlider({parent: '.winners', elemForRemove: '.container'});
+			destroySlider({parent: '.products', sliderName: '.products__slider'});
 			
-			sliderName.destroy();
-			sliderName = slider(
-					{wrapper: sliderClassName, settings: productSettings});
-			sliderFn();
-			sliderName.mount();
+			setPageLanguage();
 		});
 	});
 	
@@ -83,10 +75,13 @@ function changeLanguage({
 		const local = locale()[curLang];
 		
 		const winnerParentElement = document.querySelector('.winners'),
-				container = document.createElement('div');
-		container.classList.add('container');
+				container = createElement(
+						{attributeName: 'div', className: 'container'}),
+				productsSlider = createSliderWithLang();
+		
 		winnerParentElement.append(container);
 		
+		productsSlider.mount();
 		createWinnersSlider(
 				{sliderLocaleObject: local, curLang, container});
 		

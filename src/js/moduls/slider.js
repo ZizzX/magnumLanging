@@ -6,11 +6,8 @@ function slider({
 									showModal = false,
 									settings,
 									slideImg,
-									modalName,
-									modalImg,
 								}) {
-	let arraySlidersName = [],
-			slider;
+	let slider;
 	
 	slider = new Glide(wrapper, settings);
 	
