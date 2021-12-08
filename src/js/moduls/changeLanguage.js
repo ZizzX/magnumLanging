@@ -1,18 +1,14 @@
 import {locale} from '../locale.js';
 import {productSettings} from '../constants/sliderSettings.js';
 import slider from './slider.js';
-import Winners from './winners.js';
-import {winnersArray} from '../constants/winners.js';
-import {winnersImagesArray} from '../constants/winners.js';
-import {winnersSettings} from '../constants/sliderSettings.js';
-import Glide from '@glidejs/glide';
+import createWinnersSlider from './sliderCreate.js';
+import destroySlider from './removeWinnersSlider.js';
 
 function changeLanguage({
 													sliderName,
 													sliderFn,
 													sliderClassName,
 													curLang,
-													winnersParentElem,
 												}) {
 	const lang = document.querySelectorAll('.lang');
 	
@@ -28,8 +24,6 @@ function changeLanguage({
 			promotionRulesBtn = document.querySelector('.promotion-rules__btn'),
 			productsTitle = document.querySelector('.products__title'),
 			productsBtn = document.querySelector('.products__btn'),
-			/*		winnersTitle = document.querySelector('.winners__title'),
-			 winnersDescr = document.querySelector('.winners__descr'),*/
 			generalPartnersTitle = document.querySelector('.general-partners__title'),
 			partnersTitle = document.querySelector('.partners__title'),
 			copyright = document.querySelector('.copyright .text'),
@@ -66,10 +60,6 @@ function changeLanguage({
 	lang.forEach(langLink => {
 		langLink.addEventListener('click', (e) => {
 			const target = e.target;
-			const newContainer = winnersParentElem.querySelector('.winners' +
-																															 ' .container');
-			
-			newContainer.remove();
 			
 			lang.forEach(langItem => removeHideClass(langItem));
 			addHideClass(target);
@@ -78,6 +68,8 @@ function changeLanguage({
 			localStorage.setItem('lang', curLang);
 			
 			setPageLanguage();
+			
+			destroySlider({parent: '.winners', elemForRemove: '.container'});
 			
 			sliderName.destroy();
 			sliderName = slider(
@@ -92,30 +84,11 @@ function changeLanguage({
 		
 		const winnerParentElement = document.querySelector('.winners'),
 				container = document.createElement('div');
-		
 		container.classList.add('container');
 		winnerParentElement.append(container);
 		
-		const winnersLangObject = local.winners;
-		
-		new Winners({
-									title: winnersLangObject.title,
-									subtitle: winnersLangObject.subtitle,
-									parent: container,
-									lang: curLang,
-								}).render();
-		
-		/*winnersLangObject.winnersTitles.forEach((week, index) => {
-		 new Winners({
-		 parent: container,
-		 title: week.title,
-		 subtitle: winnersLangObject.congrat,
-		 lang: curLang,
-		 winnersArray: winnersArray[index],
-		 slider: `slider-${index + 1}`,
-		 winnersImages: winnersImagesArray[index],
-		 }).render();
-		 });*/
+		createWinnersSlider(
+				{sliderLocaleObject: local, curLang, container});
 		
 		headerTitle.innerHTML = local.header.title;
 		headerText.innerHTML = local.header.subtitle;
@@ -132,16 +105,16 @@ function changeLanguage({
 		
 		promotionRulesBtn.textContent = local.promotionRules.btn;
 		if (curLang === 'ru') {
-			setElemAttribute(promotionRulesBtn, 'href', './doc/promotion-rules.pdf');
+			setElemAttribute(promotionRulesBtn, 'href',
+											 './doc/agreement-magnum_RU.pdf');
 			setElemAttribute(promotionMillionLogo, 'src', './img/million.png');
 		} else {
-			setElemAttribute(promotionRulesBtn, 'href', './doc/promotion-rules.pdf');
+			setElemAttribute(promotionRulesBtn, 'href',
+											 './doc/agreement-magnum_KZ.pdf');
 			setElemAttribute(promotionMillionLogo, 'src', './img/kz_million.png');
 		}
 		productsTitle.textContent = local.products.title;
 		productsBtn.textContent = local.products.btn;
-		/*	winnersTitle.textContent = local.winners.title;
-		 winnersDescr.textContent = local.winners.subtitle;*/
 		generalPartnersTitle.textContent = local.generalPartners.title;
 		partnersTitle.textContent = local.partners.title;
 		copyright.textContent = local.footer.copyright;

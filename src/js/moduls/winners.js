@@ -28,7 +28,8 @@ class Winners {
 				cardInner = document.createElement('div'),
 				winnersSlider = document.createElement('div'),
 				glideTrack = document.createElement('div'),
-				glideSlides = document.createElement('ul');
+				glideSlides = document.createElement('ul'),
+				glideArrows = document.createElement('div');
 		
 		function addedClassName(tag, className) {
 			const classes = className.length > 0 ? className.split(' ') : className;
@@ -41,10 +42,13 @@ class Winners {
 		addedClassName(cardInner, 'winners__card-inner');
 		addedClassName(glideTrack, 'glide__track');
 		addedClassName(glideSlides, 'glide__slides');
+		addedClassName(glideArrows, 'glide__arrows');
 		addedClassName(winnersSlider,
-									 `winners__slider row--mt`);
+									 `winners__slider slider row--mt`);
 		
 		glideTrack.setAttribute('data-glide-el', 'track');
+		glideArrows.setAttribute('data-glide-el', 'controls');
+		
 		bant.innerHTML = `<img src="./img/winners-bant.png" alt="Поздравляем победителей, бант">`;
 		
 		cardInner.innerHTML =
@@ -55,10 +59,23 @@ class Winners {
 					<p class="winners__descr">${this.subtitle}</p>
 				`;
 		
+		glideArrows.innerHTML =
+				`
+					<button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+						<img src="./img/arrow.png"
+									 alt="назад">
+					</button>
+					<button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+						<img src="./img/arrow-prev.png"
+									 alt="вперед">
+					</button>
+				`;
+		
 		card.append(bant);
-		card.insertAdjacentElement('beforeEnd', cardInner);
+		card.append(cardInner);
 		glideTrack.append(glideSlides);
 		winnersSlider.append(glideTrack);
+		winnersSlider.append(glideArrows);
 		
 		if (this.winnersArray) {
 			this.winnersArray.forEach((winner) => {
@@ -89,8 +106,8 @@ class Winners {
 			});
 		}
 		
-		cardInner.insertAdjacentElement('beforeEnd', winnersList);
-		cardInner.insertAdjacentElement('beforeEnd', winnersSlider);
+		cardInner.append(winnersList);
+		cardInner.append(winnersSlider);
 		this.parent.append(card);
 		
 		const winner = slider({
