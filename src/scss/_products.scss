@@ -35,7 +35,8 @@
   .product-text {
     text-align: center;
     margin: .5rem 0 0;
-    height: clamp(30px, 7vw, 70px);
+    //height: clamp(30px, 7vw, 70px);
+    height: clamp(73px,10vw,120px);
     width: 100%;
     display: flex;
     flex-direction: column;

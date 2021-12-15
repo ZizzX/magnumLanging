@@ -11,6 +11,7 @@ class Winners {
 								lang,
 								parent,
 								slider,
+								video,
 							}) {
 		this.title = title;
 		this.subtitle = subtitle;
@@ -19,25 +20,46 @@ class Winners {
 		this.parent = parent;
 		this.lang = lang;
 		this.slider = slider;
+		this.video = video.src;
 	}
 	
 	render() {
-		let winnersList = document.createElement('ul'),
-				card = document.createElement('div'),
+		let card = document.createElement('div'),
 				bant = document.createElement('div'),
 				cardInner = document.createElement('div'),
 				winnersSlider = document.createElement('div'),
 				glideTrack = document.createElement('div'),
 				glideSlides = document.createElement('ul'),
-				glideArrows = document.createElement('div');
+				glideArrows = document.createElement('div'),
+				iframeElementWrapper = document.createElement('div');
 		
 		function addedClassName(tag, className) {
 			const classes = className.length > 0 ? className.split(' ') : className;
 			tag.classList.add(...classes);
 		}
 		
+		function createWinnersList(winnersArrayName, winnersDecription) {
+			const winnersList = document.createElement('ul');
+			winnersList.innerHTML = `<p class="winners--p winners__descr">${winnersDecription}</p>`;
+			cardInner.append(winnersList);
+			addedClassName(winnersList, 'winners__list');
+			
+			winnersArrayName.forEach((winner) => {
+				let winnersListItem = document.createElement('li');
+				addedClassName(winnersListItem, 'winners__list-item');
+				
+				winnersListItem.innerHTML =
+						`
+							<span class="winners-name">${winner.name}</span>
+							<span class="winners-city">${winner.city}</span>
+							`;
+				
+				winnersSlider.append();
+				winnersList.append(winnersListItem);
+			});
+		}
+		
 		addedClassName(card, 'winners__card');
-		addedClassName(winnersList, 'winners__list');
 		addedClassName(bant, 'bant');
 		addedClassName(cardInner, 'winners__card-inner');
 		addedClassName(glideTrack, 'glide__track');
@@ -45,6 +67,7 @@ class Winners {
 		addedClassName(glideArrows, 'glide__arrows');
 		addedClassName(winnersSlider,
 									 `winners__slider slider row--mt`);
+		// addedClassName(winnersDescr, 'winners--p winners__descr');
 		
 		glideTrack.setAttribute('data-glide-el', 'track');
 		glideArrows.setAttribute('data-glide-el', 'controls');
@@ -78,21 +101,29 @@ class Winners {
 		winnersSlider.append(glideArrows);
 		
 		if (this.winnersArray) {
-			this.winnersArray.forEach((winner) => {
-				let winners = document.createElement('li');
-				addedClassName(winners, 'winners__list-item');
-				
-				winners.innerHTML =
-						`
-							<span class="winners-name">${winner.name}</span>
-							<span class="winners-city">${winner.city}</span>
-							`;
-				
-				winnersSlider.append();
-				winnersList.append(winners);
-			});
+			const descrBonus = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 бонусных баллов на карту Magnum Club'
+					:
+					'Magnum Club картасына 1 000 000 бонустық ұпай ұтыс ойынының жеңімпаздары';
+			
+			const descrMoney = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 тенге на карту MasterCard'
+					:
+					'MasterCard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
+			
+			createWinnersList(this.winnersArray.millionTenge, descrMoney);
+			createWinnersList(this.winnersArray.millionBonus, descrBonus);
+			
+			addedClassName(iframeElementWrapper, 'iframe');
+			iframeElementWrapper.innerHTML =
+					`
+					<iframe
+					width="100%"
+					height="100%"
+					src=${this.video}
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				`;
 		} else {
-			winnersList.style = 'display: none';
 			winnersSlider.style = 'display: none';
 		}
 		
@@ -103,22 +134,30 @@ class Winners {
 				
 				glideSlideListItem.innerHTML = `<img src=./img/winner${i}.jpg>`;
 				glideSlides.append(glideSlideListItem);
+				
+				const winner = slider({
+																wrapper: winnersSlider,
+																settings: winnersSettings,
+																showModal: true,
+																modalName: '.winners-modal',
+																modalImg: '.modal-img > img',
+																slideImg: '.glide__slide img',
+															});
+				
+				cardInner.append(winnersSlider);
+				winner.mount();
 			});
 		}
+		const text = this.lang === 'ru' ? '*Список победителей предварительный и может быть скорректирован после проверки данных'
+						:
+						'*Жеңімпаздар тізімі бастапқы тізім болып табылады және деректерді тексергеннен кейін' +
+						' түзетілуі мүмкін.';
+		this.video ? (
+				cardInner.appendChild(iframeElementWrapper),
+				iframeElementWrapper.insertAdjacentHTML('afterend', `<p style="color: #7d0d13;">${text}</p>`)
+		) : null;
 		
-		cardInner.append(winnersList);
-		cardInner.append(winnersSlider);
 		this.parent.append(card);
-		
-		const winner = slider({
-														wrapper: winnersSlider,
-														settings: winnersSettings,
-														showModal: true,
-														modalName: '.winners-modal',
-														modalImg: '.modal-img > img',
-														slideImg: '.glide__slide img',
-													});
-		winner.mount();
 	}
 }
 

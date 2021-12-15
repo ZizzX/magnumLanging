@@ -1,8 +1,9 @@
 export const productSettings = {
 	type: 'carousel',
-	startAt: 0,
 	perView: 5,
 	gap: 25,
+	peek: {before: 0, after: 50},
+	hoverpause: true,
 	autoplay: 4000,
 	height: 235,
 	breakpoints: {
@@ -13,6 +14,7 @@ export const productSettings = {
 		1100: {
 			perView: 5,
 			gap: 15,
+			peek: {before: -15, after: 45},
 		},
 		996: {
 			perView: 4,
@@ -24,10 +26,12 @@ export const productSettings = {
 		550: {
 			perView: 3,
 			gap: 10,
+			peek: {before: 0, after: 100},
 		},
 		480: {
 			perView: 2,
 			gap: 10,
+			peek: {before: -20, after: 100},
 		},
 	},
 };

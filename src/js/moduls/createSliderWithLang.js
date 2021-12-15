@@ -13,7 +13,7 @@ function createSliderWithLang() {
 		productsList.innerHTML = '';
 		let currLang = localStorage.getItem('lang');
 		
-		productsArr[0].forEach(productObj => {
+		productsArr.forEach(productObj => {
 			let desc = currLang === 'ru' ? productObj.descrRU : productObj.descrKZ;
 			productsList.innerHTML += `
                            <li class="glide__slide product-item">

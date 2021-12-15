@@ -1,6 +1,5 @@
 import Winners from './winners.js';
-import {winnersArray} from '../constants/winners.js';
-import {winnersImagesArray} from '../constants/winners.js';
+import {winnersArray, winnersVideo, winnersImagesArray} from '../constants/winners.js';
 
 function createWinnersSlider({
 															 sliderLocaleObject,
@@ -21,6 +20,7 @@ function createWinnersSlider({
 													 winnersArray: winnersArray[index],
 													 slider: `slider-${index + 1}`,
 													 winnersImages: winnersImagesArray[index],
+													 video: winnersVideo[index],
 												 }).render();
 		});
 	} else {

@@ -82,8 +82,10 @@ function changeLanguage({
 		winnerParentElement.append(container);
 		
 		productsSlider.mount();
+/*		createWinnersSlider(
+				{sliderLocaleObject: local, curLang, container});*/
 		createWinnersSlider(
-				{sliderLocaleObject: local, curLang, container});
+				{sliderLocaleObject: local, curLang, container, hasWinners: true});
 		
 		headerTitle.innerHTML = local.header.title;
 		headerText.innerHTML = local.header.subtitle;
