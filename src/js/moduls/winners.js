@@ -105,9 +105,9 @@ class Winners {
 					:
 					'Magnum Club картасына 1 000 000 бонустық ұпай ұтыс ойынының жеңімпаздары';
 			
-			const descrMoney = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 тенге на карту MasterCard'
+			const descrMoney = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 тенге на карту Mastercard'
 					:
-					'MasterCard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
+					'Mastercard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
 			
 			createWinnersList(this.winnersArray.millionTenge, descrMoney);
 			createWinnersList(this.winnersArray.millionBonus, descrBonus);
