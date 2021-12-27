@@ -2,11 +2,10 @@ import Glide from '@glidejs/glide';
 
 function destroySlider({parent, elemForRemove, sliderName}) {
 	const winnersParentElem = document.querySelector(parent),
-			newContainer = winnersParentElem.querySelector(elemForRemove),
-			slider = winnersParentElem.querySelector(sliderName);
+			newContainer = winnersParentElem.querySelector(elemForRemove);
 	
 	elemForRemove ? newContainer.remove() : null;
-	sliderName ? new Glide(slider).destroy() : null;
+	sliderName ? sliderName.destroy() : null;
 }
 
 export default destroySlider;
