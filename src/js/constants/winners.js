@@ -2,10 +2,6 @@ export const winnersArray = {
 	0: {
 		millionTenge: [
 			{
-				name: 'Ким Аркадий',
-				city: 'Алматы',
-			},
-			{
 				name: 'Джусупова Айгуль',
 				city: 'Алматы',
 			},
@@ -18,8 +14,12 @@ export const winnersArray = {
 				city: 'Алматы',
 			},
 			{
-				name: 'Баймагамбетова Аяжан',
+				name: 'Денис Болдырев',
 				city: 'Алматы',
+			},
+			{
+				name: 'Бибигуль Худайбергенова',
+				city: 'Южно-Казахстанская обл.',
 			},
 		],
 		millionBonus: [
@@ -48,16 +48,17 @@ export const winnersArray = {
 };
 
 export const winnersImagesArray = {
-	// 0: [
-	// 	{
-	// 		// img: './img/winner0.jpg',
-	// 		// alt: 'winner image',
-	// 	},
-	// ],
+	 0: [
+	 	{
+	 		img: './img/winners/1.jpg',
+			alt: 'Победитель',
+	 	},
+	 ],
 };
 
 export const winnersVideo = {
-	0: {
-		src: 'https://www.youtube.com/embed/eJ5MhZXsA2E',
-	},
+	0: [
+		{src: "https://www.youtube.com/embed/eJ5MhZXsA2E"},
+		{src: "https://www.youtube.com/embed/ilDH6m0BuNY"},
+	],
 };

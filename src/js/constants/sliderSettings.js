@@ -36,7 +36,7 @@ export const productSettings = {
 	},
 };
 export const winnersSettings = {
-	type: 'carousel',
+	type: 'slider',
 	startAt: 0,
 	perView: 3,
 	gap: 20,

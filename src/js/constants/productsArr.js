@@ -139,7 +139,7 @@ export const productsArr = [
 		descrRU: 'СРЕДСТВО «DOMESTOS» В АССОРТИМЕНТЕ 1 Л',
 		descrKZ: '«DOMESTOS» ҚҰРАЛЫ ТҮР-ТҮРІМЕН 1 Л',
 	},
-	{
+	/*{
 		img: './img/products/29.jpg',
 		descrRU: 'ШАМПУНЬ «SYOSS» В АССОРТИМЕНТЕ ',
 		descrKZ: '«SYOSS» СУСАБЫНЫ ТҮР-ТҮРІМЕН',
@@ -148,7 +148,7 @@ export const productsArr = [
 		img: './img/products/30.jpg',
 		descrRU: 'БАЛЬЗАМ «SYOSS» В АССОРТИМЕНТЕ ',
 		descrKZ: '«SYOSS» БАЛЬЗАМЫ ТҮР-ТҮРІМЕН',
-	},
+	},*/
 	{
 		img: './img/products/31.jpg',
 		descrRU: 'КОНФЕТЫ «MILKA» В АССОРТИМЕНТЕ 10 * 110 Г',

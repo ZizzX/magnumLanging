@@ -5,8 +5,8 @@ function destroySlider({parent, elemForRemove, sliderName}) {
 			newContainer = winnersParentElem.querySelector(elemForRemove),
 			slider = winnersParentElem.querySelector(sliderName);
 	
-	!!newContainer ? newContainer.remove() : null;
-	slider ? new Glide(slider).destroy() : null;
+	elemForRemove ? newContainer.remove() : null;
+	sliderName ? new Glide(slider).destroy() : null;
 }
 
 export default destroySlider;

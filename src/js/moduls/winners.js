@@ -1,6 +1,9 @@
 import slider from './slider.js';
 import {winnersSettings} from '../constants/sliderSettings.js';
 import Glide from '@glidejs/glide';
+import addedClassName from '../helpers/addedClass.js';
+import VideoFrame from './videoframe.js';
+import createWinnersList from '../helpers/createWinnersList.js';
 
 class Winners {
 	constructor({
@@ -20,7 +23,7 @@ class Winners {
 		this.parent = parent;
 		this.lang = lang;
 		this.slider = slider;
-		this.video = video.src;
+		this.video = video;
 	}
 	
 	render() {
@@ -30,34 +33,7 @@ class Winners {
 				winnersSlider = document.createElement('div'),
 				glideTrack = document.createElement('div'),
 				glideSlides = document.createElement('ul'),
-				glideArrows = document.createElement('div'),
-				iframeElementWrapper = document.createElement('div');
-		
-		function addedClassName(tag, className) {
-			const classes = className.length > 0 ? className.split(' ') : className;
-			tag.classList.add(...classes);
-		}
-		
-		function createWinnersList(winnersArrayName, winnersDecription) {
-			const winnersList = document.createElement('ul');
-			winnersList.innerHTML = `<p class="winners--p winners__descr">${winnersDecription}</p>`;
-			cardInner.append(winnersList);
-			addedClassName(winnersList, 'winners__list');
-			
-			winnersArrayName.forEach((winner) => {
-				let winnersListItem = document.createElement('li');
-				addedClassName(winnersListItem, 'winners__list-item');
-				
-				winnersListItem.innerHTML =
-						`
-							<span class="winners-name">${winner.name}</span>
-							<span class="winners-city">${winner.city}</span>
-							`;
-				
-				winnersSlider.append();
-				winnersList.append(winnersListItem);
-			});
-		}
+				glideArrows = document.createElement('div');
 		
 		addedClassName(card, 'winners__card');
 		addedClassName(bant, 'bant');
@@ -67,7 +43,6 @@ class Winners {
 		addedClassName(glideArrows, 'glide__arrows');
 		addedClassName(winnersSlider,
 									 `winners__slider slider row--mt`);
-		// addedClassName(winnersDescr, 'winners--p winners__descr');
 		
 		glideTrack.setAttribute('data-glide-el', 'track');
 		glideArrows.setAttribute('data-glide-el', 'controls');
@@ -109,20 +84,8 @@ class Winners {
 					:
 					'Mastercard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
 			
-			createWinnersList(this.winnersArray.millionTenge, descrMoney);
-			createWinnersList(this.winnersArray.millionBonus, descrBonus);
-			
-			addedClassName(iframeElementWrapper, 'iframe');
-			iframeElementWrapper.innerHTML =
-					`
-					<iframe
-					width="100%"
-					height="100%"
-					src=${this.video}
-					title="YouTube video player" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen></iframe>
-				`;
+			createWinnersList({winnersArrayName: this.winnersArray.millionTenge, winnersDecription: descrMoney, cardInner, winnersSlider});
+			createWinnersList({winnersArrayName: this.winnersArray.millionBonus, winnersDecription: descrBonus, cardInner, winnersSlider});
 		} else {
 			winnersSlider.style = 'display: none';
 		}
@@ -132,32 +95,36 @@ class Winners {
 				let glideSlideListItem = document.createElement('li');
 				addedClassName(glideSlideListItem, 'glide__slide');
 				
-				glideSlideListItem.innerHTML = `<img src=./img/winner${i}.jpg>`;
+				glideSlideListItem.innerHTML = `<img src=./img/winners/${i + 1}.jpeg class="winner-img" alt='Победитель конкурса' >`;
 				glideSlides.append(glideSlideListItem);
-				
-				const winner = slider({
-																wrapper: winnersSlider,
-																settings: winnersSettings,
-																showModal: true,
-																modalName: '.winners-modal',
-																modalImg: '.modal-img > img',
-																slideImg: '.glide__slide img',
-															});
-				
 				cardInner.append(winnersSlider);
-				winner.mount();
 			});
 		}
+		
 		const text = this.lang === 'ru' ? '*Список победителей предварительный и может быть скорректирован после проверки данных'
 						:
 						'*Жеңімпаздар тізімі бастапқы тізім болып табылады және деректерді тексергеннен кейін' +
 						' түзетілуі мүмкін.';
-		this.video ? (
-				cardInner.appendChild(iframeElementWrapper),
-				iframeElementWrapper.insertAdjacentHTML('afterend', `<p style="color: #7d0d13;">${text}</p>`)
-		) : null;
+		
+		if (this.video) {
+			this.video.forEach((video, i) => {
+				const videoElem = new VideoFrame().render('iframe', video.src);
+				cardInner.appendChild(videoElem);
+				// cardInner.insertAdjacentHTML('afterend', `<p style="color: #7d0d13;">${text}</p>`);
+			});
+		}
 		
 		this.parent.append(card);
+		const winner = slider({
+														wrapper: winnersSlider,
+														settings: winnersSettings,
+														showModal: true,
+														modalName: '.winners-modal',
+														modalImg: '.modal-img > img',
+														slideImg: '.glide__slide img',
+													});
+		
+		winner.mount();
 	}
 }
 
