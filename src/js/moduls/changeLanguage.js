@@ -12,6 +12,7 @@ function changeLanguage({
 													curLang,
 												}) {
 	const lang = document.querySelectorAll('.lang');
+	let productsSlider = null;
 	
 	lang.forEach(langItem => {
 		const attr = getElemAttribute(langItem, 'data-lang');
@@ -33,7 +34,7 @@ function changeLanguage({
 			localStorage.setItem('lang', curLang);
 			
 			destroySlider({parent: '.winners', elemForRemove: '.container',});
-			destroySlider({parent: '.products', sliderName: '.products__slider'});
+			destroySlider({parent: '.products', sliderName: productsSlider});
 			
 			setPageLanguage();
 		});
@@ -45,8 +46,7 @@ function changeLanguage({
 		changeElementLang({local, curLang});
 		
 		const {winnerParentElement, container} = createWinnersParentElement();
-		
-		const	productsSlider = createSliderWithLang();
+		productsSlider = createSliderWithLang();
 		
 		winnerParentElement.append(container);
 		productsSlider.mount();

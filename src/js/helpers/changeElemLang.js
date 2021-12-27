@@ -42,7 +42,7 @@ function changeElementLang({local, curLang}) {
 		setElemAttribute(promotionMillionLogo, 'src', './img/million.png');
 	} else {
 		setElemAttribute(promotionRulesBtn, 'href',
-										 './doc/agreement-magnum_KZ.pdf');
+										 './doc/agreement-magnum_RU.pdf');
 		setElemAttribute(promotionMillionLogo, 'src', './img/kz_million.png');
 	}
 	productsTitle.textContent = local.products.title;
