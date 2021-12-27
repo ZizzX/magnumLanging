@@ -51,8 +51,7 @@ function changeLanguage({
 		winnerParentElement.append(container);
 		productsSlider.mount();
 		
-		createWinnersSlider(
-				{sliderLocaleObject: local, curLang, container, hasWinners: true});
+		createWinnersSlider({sliderLocaleObject: local, curLang, container, hasWinners: true});
 	}
 	
 	setPageLanguage();

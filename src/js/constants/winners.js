@@ -45,20 +45,74 @@ export const winnersArray = {
 			},
 		],
 	},
+	1: {
+		millionTenge: [
+			{
+				name: 'Абрасулова Майра',
+				city: 'Алматы',
+			},
+			{
+				name: 'Трубникова Ольга',
+				city: 'Алматы',
+			},
+			{
+				name: 'Абрамов Василий',
+				city: 'Алматы',
+			},
+			{
+				name: 'Ергазин Олжас',
+				city: 'Нур-Султан',
+			},
+			{
+				name: 'Фармантаева Айгуль',
+				city: 'Шымкент',
+			},
+		],
+		millionBonus: [
+			{
+				name: 'Богданова Ольга',
+				city: 'Караганда',
+			},
+			{
+				name: 'Хелилова Алия',
+				city: 'Алматы',
+			},
+			{
+				name: 'Бабаева Асель',
+				city: 'Алматы',
+			},
+			{
+				name: 'Токбергенова Бахытгуль',
+				city: 'Алматы',
+			},
+			{
+				name: 'Раймкулов Курбанбек',
+				city: 'Нур-Султан',
+			},
+		],
+	},
 };
 
 export const winnersImagesArray = {
-	 0: [
-	 	{
-	 		img: './img/winners/1.jpg',
+	0: [
+		{
+			img: './img/winners/1.jpg',
 			alt: 'Победитель',
-	 	},
-	 ],
+		},
+	],
+	1: [
+		{
+			img: './img/winners/2.jpg',
+			alt: 'Победитель',
+		},
+	],
 };
 
 export const winnersVideo = {
 	0: [
-		{src: "https://www.youtube.com/embed/eJ5MhZXsA2E"},
-		{src: "https://www.youtube.com/embed/ilDH6m0BuNY"},
+		{src: 'https://www.youtube.com/embed/eJ5MhZXsA2E'},
 	],
+	1: [
+		{src: 'https://www.youtube.com/embed/ilDH6m0BuNY'},
+	]
 };
