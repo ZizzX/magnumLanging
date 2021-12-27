@@ -96,14 +96,12 @@ export const winnersArray = {
 export const winnersImagesArray = {
 	0: [
 		{
-			img: './img/winners/1.jpg',
-			alt: 'Победитель',
+			img: './img/winners/1.jpeg',
 		},
 	],
 	1: [
 		{
-			img: './img/winners/2.jpg',
-			alt: 'Победитель',
+			img: './img/winners/2.jpeg',
 		},
 	],
 };
@@ -114,5 +112,37 @@ export const winnersVideo = {
 	],
 	1: [
 		{src: 'https://www.youtube.com/embed/ilDH6m0BuNY'},
-	]
+	],
 };
+
+export const descrBonus = () => {
+	let lang = localStorage.getItem('lang');
+	switch (lang) {
+		case 'ru' :
+			return 'Победители Розыгрыша 1 000 000 бонусных баллов на карту Magnum Club';
+		case 'kz' :
+			return 'Magnum Club картасына 1 000 000 бонустық ұпай ұтыс ойынының жеңімпаздары';
+		default:
+			return;
+	}
+};
+
+export const descrMoney = () => {
+	let lang = localStorage.getItem('lang');
+	switch (lang) {
+		case 'ru' :
+			return 'Победители Розыгрыша 1 000 000 тенге на карту Mastercard';
+		case 'kz' :
+			return 'Mastercard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
+		default:
+			return;
+	}
+};
+//
+// export const descrBonus = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 бонусных баллов на карту Magnum Club'
+// 		:
+// 		'Magnum Club картасына 1 000 000 бонустық ұпай ұтыс ойынының жеңімпаздары';
+//
+// export const descrMoney = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 тенге на карту Mastercard'
+// 		:
+// 		'Mastercard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';

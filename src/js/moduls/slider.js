@@ -10,12 +10,10 @@ function slider({
 									modalName,
 									modalImg,
 								}) {
-	let slider;
-	
-	slider = new Glide(wrapper, settings);
+	let slider = new Glide(wrapper, settings);
 	
 	if (showModal) {
-		slider.on('mount.after', createModalImg(slideImg, modalName, modalImg));
+		slider.on('mount.after', () => createModalImg(slideImg, modalName, modalImg));
 	}
 	
 	return slider;

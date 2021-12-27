@@ -10,19 +10,21 @@ function createWinnersSlider({
 	
 	const winnersLangObject = sliderLocaleObject.winners;
 	
+	const createWinnersCard = (week, index) => {
+		new Winners({
+									parent: container,
+									title: week.title,
+									subtitle: winnersLangObject.congrat,
+									lang: curLang,
+									winnersArray: winnersArray[index],
+									slider: `slider-${index + 1}`,
+									winnersImages: winnersImagesArray[index],
+									video: winnersVideo[index],
+								}).render();
+	}
+	
 	if (hasWinners) {
-		winnersLangObject.winnersTitles.forEach((week, index) => {
-			return new Winners({
-													 parent: container,
-													 title: week.title,
-													 subtitle: winnersLangObject.congrat,
-													 lang: curLang,
-													 winnersArray: winnersArray[index],
-													 slider: `slider-${index + 1}`,
-													 winnersImages: winnersImagesArray[index],
-													 video: winnersVideo[index],
-												 }).render();
-		});
+		winnersLangObject.winnersTitles.forEach(createWinnersCard);
 	} else {
 		new Winners({
 									title: winnersLangObject.title,

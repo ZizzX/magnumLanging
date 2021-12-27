@@ -1,9 +1,9 @@
 import slider from './slider.js';
 import {winnersSettings} from '../constants/sliderSettings.js';
-import Glide from '@glidejs/glide';
 import addedClassName from '../helpers/addedClass.js';
 import VideoFrame from './videoframe.js';
 import createWinnersList from '../helpers/createWinnersList.js';
+import {descrBonus, descrMoney} from '../constants/winners.js';
 
 class Winners {
 	constructor({
@@ -35,6 +35,10 @@ class Winners {
 				glideSlides = document.createElement('ul'),
 				glideArrows = document.createElement('div');
 		
+		const elemAppend = (parent, child) => {
+			parent.append(child);
+		};
+		
 		addedClassName(card, 'winners__card');
 		addedClassName(bant, 'bant');
 		addedClassName(cardInner, 'winners__card-inner');
@@ -42,10 +46,17 @@ class Winners {
 		addedClassName(glideSlides, 'glide__slides');
 		addedClassName(glideArrows, 'glide__arrows');
 		addedClassName(winnersSlider,
-									 `winners__slider slider row--mt`);
+									 `winners__slider slider row--mt ${this.slider}`);
 		
 		glideTrack.setAttribute('data-glide-el', 'track');
 		glideArrows.setAttribute('data-glide-el', 'controls');
+		
+		elemAppend(this.parent, card);
+		elemAppend(card, bant);
+		elemAppend(card, cardInner);
+		elemAppend(glideTrack, glideSlides);
+		elemAppend(winnersSlider, glideTrack);
+		elemAppend(winnersSlider, glideArrows);
 		
 		bant.innerHTML = `<img src="./img/winners-bant.png" alt="Поздравляем победителей, бант">`;
 		
@@ -69,62 +80,39 @@ class Winners {
 					</button>
 				`;
 		
-		card.append(bant);
-		card.append(cardInner);
-		glideTrack.append(glideSlides);
-		winnersSlider.append(glideTrack);
-		winnersSlider.append(glideArrows);
 		
 		if (this.winnersArray) {
-			const descrBonus = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 бонусных баллов на карту Magnum Club'
-					:
-					'Magnum Club картасына 1 000 000 бонустық ұпай ұтыс ойынының жеңімпаздары';
-			
-			const descrMoney = this.lang === 'ru' ? 'Победители Розыгрыша 1 000 000 тенге на карту Mastercard'
-					:
-					'Mastercard картасына 1 000 000 теңге ұтыс ойынының жеңімпаздары';
-			
-			createWinnersList({winnersArrayName: this.winnersArray.millionTenge, winnersDecription: descrMoney, cardInner, winnersSlider});
-			createWinnersList({winnersArrayName: this.winnersArray.millionBonus, winnersDecription: descrBonus, cardInner, winnersSlider});
+			createWinnersList({winnersArrayName: this.winnersArray.millionTenge, winnersDecription: descrMoney(), cardInner, winnersSlider});
+			createWinnersList({winnersArrayName: this.winnersArray.millionBonus, winnersDecription: descrBonus(), cardInner, winnersSlider});
 		} else {
 			winnersSlider.style = 'display: none';
 		}
 		
 		if (this.winnersImages) {
-			this.winnersImages.forEach((imgItem, i) => {
+			this.winnersImages.forEach(imgItem => {
 				let glideSlideListItem = document.createElement('li');
 				addedClassName(glideSlideListItem, 'glide__slide');
-				
-				glideSlideListItem.innerHTML = `<img src=./img/winners/${i + 1}.jpeg class="winner-img" alt='Победитель конкурса' >`;
-				glideSlides.append(glideSlideListItem);
-				cardInner.append(winnersSlider);
+				elemAppend(glideSlides, glideSlideListItem);
+				elemAppend(cardInner, winnersSlider);
+				glideSlideListItem.innerHTML = `<img src=${imgItem.img} class="winner-img" alt='Победитель конкурса' >`;
 			});
+			
+			slider({
+							 wrapper: `.${this.slider}`,
+							 settings: winnersSettings,
+							 showModal: true,
+							 modalName: '.winners-modal',
+							 modalImg: '.modal-img > img',
+							 slideImg: '.glide__slide img',
+						 }).mount();
 		}
-		
-		const text = this.lang === 'ru' ? '*Список победителей предварительный и может быть скорректирован после проверки данных'
-						:
-						'*Жеңімпаздар тізімі бастапқы тізім болып табылады және деректерді тексергеннен кейін' +
-						' түзетілуі мүмкін.';
 		
 		if (this.video) {
 			this.video.forEach((video, i) => {
 				const videoElem = new VideoFrame().render('iframe', video.src);
-				cardInner.appendChild(videoElem);
-				// cardInner.insertAdjacentHTML('afterend', `<p style="color: #7d0d13;">${text}</p>`);
+				elemAppend(cardInner, videoElem);
 			});
 		}
-		
-		this.parent.append(card);
-		const winner = slider({
-														wrapper: winnersSlider,
-														settings: winnersSettings,
-														showModal: true,
-														modalName: '.winners-modal',
-														modalImg: '.modal-img > img',
-														slideImg: '.glide__slide img',
-													});
-		
-		winner.mount();
 	}
 }
 
