@@ -3,7 +3,7 @@ import {winnersSettings} from '../constants/sliderSettings.js';
 import addedClassName from '../helpers/addedClass.js';
 import VideoFrame from './videoframe.js';
 import createWinnersList from '../helpers/createWinnersList.js';
-import {descrBonus, descrMoney} from '../constants/winners.js';
+import {descrBonus, descriptionText, descrMoney} from '../constants/winners.js';
 
 class Winners {
 	constructor({
@@ -15,6 +15,7 @@ class Winners {
 								parent,
 								slider,
 								video,
+								hasDescr,
 							}) {
 		this.title = title;
 		this.subtitle = subtitle;
@@ -24,6 +25,7 @@ class Winners {
 		this.lang = lang;
 		this.slider = slider;
 		this.video = video;
+		this.descr = hasDescr;
 	}
 	
 	render() {
@@ -33,7 +35,8 @@ class Winners {
 				winnersSlider = document.createElement('div'),
 				glideTrack = document.createElement('div'),
 				glideSlides = document.createElement('ul'),
-				glideArrows = document.createElement('div');
+				glideArrows = document.createElement('div'),
+				descrText = document.createElement('p');
 		
 		const elemAppend = (parent, child) => {
 			parent.append(child);
@@ -45,6 +48,7 @@ class Winners {
 		addedClassName(glideTrack, 'glide__track');
 		addedClassName(glideSlides, 'glide__slides');
 		addedClassName(glideArrows, 'glide__arrows');
+		addedClassName(descrText, 'winners__descr-text');
 		addedClassName(winnersSlider,
 									 `winners__slider slider row--mt ${this.slider}`);
 		
@@ -82,8 +86,16 @@ class Winners {
 		
 		
 		if (this.winnersArray) {
-			createWinnersList({winnersArrayName: this.winnersArray.millionTenge, winnersDecription: descrMoney(), cardInner, winnersSlider});
-			createWinnersList({winnersArrayName: this.winnersArray.millionBonus, winnersDecription: descrBonus(), cardInner, winnersSlider});
+			createWinnersList({
+													winnersArrayName: this.winnersArray.millionTenge,
+													winnersDecription: descrMoney[this.lang],
+													cardInner, winnersSlider});
+			
+			createWinnersList({
+													winnersArrayName: this.winnersArray.millionBonus,
+													winnersDecription: descrBonus[this.lang],
+													cardInner,
+													winnersSlider});
 		} else {
 			winnersSlider.style = 'display: none';
 		}
@@ -112,6 +124,11 @@ class Winners {
 				const videoElem = new VideoFrame().render('iframe', video.src);
 				elemAppend(cardInner, videoElem);
 			});
+		}
+		
+		if (this.descr) {
+			descrText.textContent = descriptionText[this.lang]
+			elemAppend(cardInner, descrText);
 		}
 	}
 }

@@ -8,7 +8,8 @@ function createWinnersSlider({
 															 container,
 														 }) {
 	
-	const winnersLangObject = sliderLocaleObject.winners;
+	const winnersLangObject = sliderLocaleObject.winners,
+				winnersCardTitlesArray = winnersLangObject.winnersTitles;
 	
 	const createWinnersCard = (week, index) => {
 		new Winners({
@@ -20,11 +21,12 @@ function createWinnersSlider({
 									slider: `slider-${index + 1}`,
 									winnersImages: winnersImagesArray[index],
 									video: winnersVideo[index],
+									hasDescr: index === winnersCardTitlesArray.length - 1
 								}).render();
 	}
 	
 	if (hasWinners) {
-		winnersLangObject.winnersTitles.forEach(createWinnersCard);
+		winnersCardTitlesArray.forEach(createWinnersCard);
 	} else {
 		new Winners({
 									title: winnersLangObject.title,
