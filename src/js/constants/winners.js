@@ -60,7 +60,7 @@ export const winnersArray = {
 				city: 'Алматы',
 			},
 			{
-				name: 'Ергазин Олжас',
+				name: 'Садыкова Акмарал',
 				city: 'Нур-Султан',
 			},
 			{

@@ -114,7 +114,7 @@ function css() {
       pipe(
           rename({
             extname: '.min.css',
-            basename: 'style1'
+            basename: 'style'
           }),
       ).
       pipe(sourcemaps.write('.')).
