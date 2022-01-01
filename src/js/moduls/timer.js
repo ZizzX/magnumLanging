@@ -20,6 +20,8 @@ function timer() {
 	function getZero(num) {
 		if (num >= 0 && num < 10) {
 			return `0${num}`;
+		} else if(num < 0) {
+			return `00`;
 		} else {
 			return num;
 		}
@@ -38,14 +40,14 @@ function timer() {
 		function updateClock() {
 			const t = getTimeRemaining(endtime);
 			
+			if (t.total <= 0) {
+				clearInterval(timeInterval);
+			}
+			
 			days.innerHTML = getZero(t.days);
 			hours.innerHTML = getZero(t.hours);
 			minuts.innerHTML = getZero(t.minuts);
 			seconds.innerHTML = getZero(t.seconds);
-			
-			if (t.total <= 0) {
-				clearInterval(timeInterval);
-			}
 		}
 	}
 	
