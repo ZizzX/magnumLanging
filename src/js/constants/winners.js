@@ -157,6 +157,9 @@ export const winnersVideo = {
 	1: [
 		{src: 'https://www.youtube.com/embed/ilDH6m0BuNY'},
 	],
+	2: [
+		{src: 'https://www.youtube.com/embed/xHKXizNTnP0'},
+	],
 };
 
 export const descrBonus = {
