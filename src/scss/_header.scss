@@ -109,7 +109,9 @@
   }
 
   &__text {
-    max-width: 676px;
+    //max-width: 676px;
+    max-width: 55vw;
+    text-align: center;
     font-weight: 500;
     font-size: $big-font-size;
 
