@@ -38,7 +38,9 @@ export const productSettings = {
 export const winnersSettings = {
 	type: 'slider',
 	startAt: 0,
+	width: 230,
 	perView: 3,
+	height: 385,
 	gap: 20,
 	breakpoints: {
 		1280: {

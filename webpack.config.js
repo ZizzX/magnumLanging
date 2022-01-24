@@ -9,7 +9,7 @@ module.exports = {
   mode: 'development',
   entry: './src/js/script.js',
   output: {
-    filename: 'script.min.js',
+    filename: 'script1.min.js',
     path: __dirname + 'dist/js',
   },
   watch: true,

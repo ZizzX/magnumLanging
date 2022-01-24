@@ -137,6 +137,52 @@ export const winnersArray = {
 			},
 		],
 	},
+	3: {
+		millionTenge: [
+			{
+				name: 'Сабина Шуакбаева',
+				city: 'Караганда',
+			},
+			{
+				name: 'Дарига Лекерова ',
+				city: 'Алматы',
+			},
+			{
+				name: 'Гульдана Абубакирова',
+				city: 'Алматы',
+			},
+			{
+				name: 'Малика Тогжанова',
+				city: 'Нур-Султан',
+			},
+			{
+				name: 'Алиса Каирбекова',
+				city: 'Нур-Султан',
+			},
+		],
+		millionBonus: [
+			{
+				name: 'Сулейман Алиев',
+				city: 'Алматы',
+			},
+			{
+				name: 'Дари Бектурова',
+				city: 'Алматы',
+			},
+			{
+				name: 'Жулдыз Ахметоллаева',
+				city: 'Алматы',
+			},
+			{
+				name: 'Дмитрий Марков',
+				city: 'Алматы',
+			},
+			{
+				name: 'Айгуль Токужинова',
+				city: 'Алматы',
+			},
+		],
+	},
 };
 
 export const winnersImagesArray = {
@@ -148,6 +194,17 @@ export const winnersImagesArray = {
 			img: './img/winners/2.jpeg',
 		},
 	],
+	3: [
+		{
+			img: './img/winners/winner.jpg',
+		},
+		{
+			img: './img/winners/winner2.jpg',
+		},
+		{
+			img: './img/winners/winner3.jpg',
+		},
+	]
 };
 
 export const winnersVideo = {
@@ -159,6 +216,9 @@ export const winnersVideo = {
 	],
 	2: [
 		{src: 'https://www.youtube.com/embed/xHKXizNTnP0'},
+	],
+	3: [
+		{src: "https://www.youtube.com/embed/EHHRvyRdReQ"},
 	],
 };
 
