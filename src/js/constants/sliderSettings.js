@@ -40,24 +40,29 @@ export const winnersSettings = {
 	startAt: 0,
 	width: 230,
 	perView: 3,
-	height: 385,
+	height: 375,
 	gap: 20,
 	breakpoints: {
 		1280: {
 			gap: 20,
 			perView: 3,
+			height: 375,
 		},
 		1100: {
 			gap: 15,
+			height: 375,
 		},
 		996: {
 			gap: 10,
+			height: 355,
 		},
 		800: {
 			perView: 3,
+			height: 355,
 		},
 		590: {
 			perView: 2,
+			height: 265,
 		},
 	},
 };

@@ -21,7 +21,7 @@ function createWinnersSlider({
 									slider: `slider-${index + 1}`,
 									winnersImages: winnersImagesArray[index],
 									video: winnersVideo[index],
-									hasDescr: index === winnersCardTitlesArray.length - 1
+									hasDescr: false
 								}).render();
 	}
 	

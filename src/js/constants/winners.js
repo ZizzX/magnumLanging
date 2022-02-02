@@ -204,7 +204,19 @@ export const winnersImagesArray = {
 		{
 			img: './img/winners/winner3.jpg',
 		},
-	]
+		{
+			img: './img/winners/4/1.jpeg',
+		},
+		{
+			img: './img/winners/4/2.jpeg',
+		},
+		{
+			img: './img/winners/4/3.jpeg',
+		},
+		{
+			img: './img/winners/4/4.jpeg',
+		},
+	],
 };
 
 export const winnersVideo = {
